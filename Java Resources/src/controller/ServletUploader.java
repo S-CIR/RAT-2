@@ -65,7 +65,7 @@ public class ServletUploader extends HttpServlet {
 
 
 
-    filePath = "C:\\Users\\Fra&Lor\\Desktop\\RAT_Files" + r.getIdRequest()+"\\";
+    filePath = "C:\\Users\\cirie\\Desktop\\RAT_Files" + r.getIdRequest()+"\\";
     File file = new File(filePath);
     if (!file.exists()) {
       if (!file.mkdir()) {
