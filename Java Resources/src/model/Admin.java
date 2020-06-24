@@ -11,9 +11,6 @@ public class Admin implements src.interfaccia.UserInterface {
 	private String password;
 	private int userType;
 	
-	public int insert() {
-		return UtenteDAO.doSave(this);
-	}
 	
 	//constructor
 	public Admin(String nome,String cognome,char sex,String email,String password,int userType) {
@@ -27,6 +24,10 @@ public class Admin implements src.interfaccia.UserInterface {
 	
 	//empty constructor
 	public Admin() {}
+	
+	public int insert() {
+		return UtenteDAO.doSave(this);
+	}
 
 	//getters and setters
 	public String getEmail() {
