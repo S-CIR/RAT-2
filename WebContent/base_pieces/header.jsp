@@ -34,7 +34,7 @@
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
   } else if (pageFolder.equals("_areaStudent")) { //se stiamo in una pagina dell'area studente
-	 logoRedirect = request.getContextPath()+"/_areaStudent/viewRequest.jsp";
+	 logoRedirect = request.getContextPath()+"/area_studente/viewRequest.jsp";
   
     if (pageName.equals("viewRequest.jsp")) { //se stiamo in viewRequest
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
