@@ -15,7 +15,7 @@
 	  logoRedirect = request.getContextPath()+ck.getUrlRedirect();
   }*/
 
-  if (pageFolder.equals("_areaAdmin")) { //se stiamo in una pagina dell'area admin
+  if (pageFolder.equals("area_Admin")) { //se stiamo in una pagina dell'area admin
 	  logoRedirect = request.getContextPath()+"/_areaAdmin/viewRequest.jsp";
   
     if (pageName.equals("viewRequest.jsp")) {
@@ -24,7 +24,7 @@
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
-  } else if (pageFolder.equals("_areaSecretary")) { //se stiamo in una pagina dell'area segreteria
+  } else if (pageFolder.equals("area_Secretary")) { //se stiamo in una pagina dell'area segreteria
 	  logoRedirect = request.getContextPath()+"/_areaSecretary/viewRequest.jsp";
   
     if (pageName.equals("viewRequest.jsp")) {
@@ -33,7 +33,7 @@
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
-  } else if (pageFolder.equals("_areaStudent")) { //se stiamo in una pagina dell'area studente
+  } else if (pageFolder.equals("area_Student")) { //se stiamo in una pagina dell'area studente
 	 logoRedirect = request.getContextPath()+"/area_studente/viewRequest.jsp";
   
     if (pageName.equals("viewRequest.jsp")) { //se stiamo in viewRequest
