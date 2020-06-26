@@ -25,11 +25,11 @@
           "<li><a href=\"" + request.getContextPath() + "/pages/logout.jsp\">Disconnetti</a></li>";
     }
   } else if (pageFolder.equals("area_secretary")) { //se stiamo in una pagina dell'area segreteria
-	  logoRedirect = request.getContextPath()+"/area_secretary/viewRequest.jsp";
+	  logoRedirect = request.getContextPath()+"/pages/area_secretary/viewRequest.jsp";
   
     if (pageName.equals("viewRequest.jsp")) {
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
-          + "/viewRequest.jsp\">Richieste</a></li>";
+          + "/pages/viewRequest.jsp\">Richieste</a></li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/pages/logout.jsp\">Disconnetti</a></li>";
     }
@@ -54,25 +54,25 @@
       menu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/uploadAttached.jsp\">Carica Allegato</a></li>";
       menu +=
-          "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
+          "<li><a href=\"" + request.getContextPath() + "/pages/logout.jsp\">Disconnetti</a></li>";
     }
     if (pageName.equals("uploadAttached.jsp")) { //pagina di caricamento dell'allegato
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/uploadAttached.jsp\">Carica Allegato</a></li>";
       menu +=
-          "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
+          "<li><a href=\"" + request.getContextPath() + "/pages/logout.jsp\">Disconnetti</a></li>";
     }
     if (pageName.equals("signUp.jsp")) {	//pagina di registrazione alla piattaforma
 		//logoRedirect = request.getContextPath()+ck.getUrlRedirect();	//siccome signUp è raggiungibile solo quando non sono loggato
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/signUp.jsp\">Registrati</a></li>";
-      menu += "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Benvenuto</a></li>";
+      menu += "<li><a href=\"" + request.getContextPath() + "/pages/index.jsp\">Benvenuto</a></li>";
     }
   } else if (pageFolder.equals("")) { //se non siamo (o siamo) loggati
     if (pageName.equals("login.jsp")) { //se ci troviamo in login.jsp
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath()
           + "/login.jsp\">Login</a></li>";
-      menu += "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Benvenuto</a></li>";
+      menu += "<li><a href=\"" + request.getContextPath() + "/pages/index.jsp\">Benvenuto</a></li>";
     } else if (pageName.equals("index.jsp")) { //se ci troviamo in index.jsp
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath()
           + "/index.jsp\">Benvenuto</a></li>";

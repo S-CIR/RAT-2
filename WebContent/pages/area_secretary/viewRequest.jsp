@@ -34,17 +34,17 @@
 									<thead>
 										<tr>
 											<th class="text-center">ID</th>
-											<th class="text-center">Allegati</th>
 											<th class="text-center">Matricola</th>
 											<th class="text-center">Nome</th>
 											<th class="text-center">Cognome</th>
 											<th class="text-center">Ore</th>
+											<th class="text-center">CFU Richiesti</th>
 											<th class="text-center">CFU Conv.</th>
 											<th class="text-center">Inoltra</th>
 										</tr>
 									</thead>
 									<tbody id="bodySegretaryBody">
-
+									
 									</tbody>
 								</table>
 							</div>

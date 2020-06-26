@@ -134,6 +134,27 @@ import src.interfaccia.UserInterface;
 			return null;
 		}
 		
+		public static ResultSet findByState(int fk_state){
+			Connection con = new DBConnection().getInstance().getConn();
+			if(con!=null) {
+				String sql = "SELECT r.id_request, r.matricola, u.name, u.surname, r.hours, "
+						+ "r.start_date, r.end_date, r.requested_cfu, r.validated_cfu, "
+						+ "a.name AS nomeazienda, s.description FROM request r INNER JOIN user u ON r.fk_user = u.email "
+						+ "INNER JOIN azienda a ON fk_azienda = a.idazienda "
+						+ "INNER JOIN state s ON fk_state = s.id_state WHERE r.fk_state = ?";
+				try {
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setInt(1, fk_state);
+					ResultSet res = stmt.executeQuery();
+					if(res.next())
+						return res;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return null;
+		}
+		
 		public static boolean ifExist (int idrequest,String fk_user,int fk_azienda, int fk_state) {
 			Connection con = new DBConnection().getInstance().getConn();
 			if(con!=null) {

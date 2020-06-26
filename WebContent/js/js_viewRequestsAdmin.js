@@ -7,13 +7,10 @@ function showData() {
 	$(".preloader").show();
 
 	$.ajax({
-		url : absolutePath + "/ServletAdmin",
+		url : absolutePath + "/ServletRichiesteAdmin",
 		type : "POST",
 		dataType : 'JSON',
 		async : false,
-		data : {
-			"flag" : 1
-		},
 		success : function(msg) {
 			if (!msg.result) {
 				showAlert(1, msg.error);
