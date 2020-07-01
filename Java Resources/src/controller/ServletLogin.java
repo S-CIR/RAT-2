@@ -40,13 +40,13 @@ public class ServletLogin extends HttpServlet {
 	        	src.interfaccia.UserInterface user = null;
 	        	int type = u.getUser_Type();
 	        	if (type == 0) { // Profilo Studente
-	                redirect ="/pages/area_studente/viewRequest.jsp";
+	                redirect ="/ServletRichiesteStudente";
 	                user = u;
 	              } else if (type == 1) { // Profilo Secretary
-	                redirect ="/pages/area_secretary/viewRequest.jsp";
+	                redirect ="/ServletRichiesteSecretary";
 	                user = u;
 	              } else if (type == 2) { // Profilo Admin
-	                redirect ="/pages/area_admin/viewRequest.jsp";
+	                redirect ="/ServletRichiesteAdmin";
 	                user = u;
 	              }
 	        	 request.getSession().setAttribute("user", user);

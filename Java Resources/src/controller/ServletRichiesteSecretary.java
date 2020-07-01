@@ -2,7 +2,9 @@ package src.controller;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,47 +32,51 @@ public class ServletRichiesteSecretary extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String content = "";
+		int count = 0;
 		ResultSet r=null;
+		int req_ids[] = new int[10];
+		String matricole[] = new String[10];
+		String nomi[] = new String[10];
+		String cognomi[] = new String[10];
+		int hours[] = new int[10];
+		int req_cfu[] = new int[10];
+		int val_cfu[] = new int[10];
 		
 		try {
-        	//-----recupero richieste
-        	r = RequestDAO.findByState(1);
+        	r = RequestDAO.findByState(1);	//Recupero richieste in un determinato stato
+        	
             if(r!=null) {
-              int count = r.last() ? r.getRow() : 0;
-              if (count > 0) {
-                r.beforeFirst();
-                String classe = "even";
-                
-                while (r.next()) {
-                  int idRequest = r.getInt("id_request");
-                  if (classe.equals("odd")) {
-                    classe = "even";
-                  } else {
-                    classe = "odd";
-                  }
-                  content += "<tr class='" + classe + "' role='row'>";
-                  content += "    <td class='text-center'>" + idRequest + "</td>"; //id richiesta
-                  content += "    <td class='text-center'>" + r.getString("matricola") + "</td>"; //matricola
-                  content += "    <td class='text-center'>" + r.getString("name") + "</td>"; //nome
-                  content += "    <td class='text-center'>" + r.getString("surname") + "</td>"; //cognome
-                  content += "    <td class='text-center'>" + r.getInt("hours") + "</td>"; //ore
-                  content += "    <td class='text-center'>" + r.getInt("requested_cfu") + "</td>"; //cfu richiesti
-                  content += "    <td class='text-center'>" + r.getInt("validated_cfu") + "</td>"; //cfu convalidati
-                  content += "</tr>";
-                }              
-              } else {
-                content += "<tr>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + ">Nessuna Richiesta Disponibile</td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "</tr>";
+            	  int i = 0;
+            	  r.beforeFirst();
+            	  while (r.next()) {
+  	                  req_ids[i]=r.getInt("id_request");
+  	                  matricole[i] = r.getString("matricola");
+  	                  nomi[i] = r.getString("name");
+  	                  cognomi[i] = r.getString("surname");
+  	                  hours[i] = r.getInt("hours");
+  	                  req_cfu[i] = r.getInt("requested_cfu");
+  	                  val_cfu[i] = r.getInt("validated_cfu");
+  	                  i++;
+            	  }
+            	  count = i;
               }
-            }
-          } catch (Exception e) {
+           }
+		
+		catch (SQLException e) {
             e.printStackTrace();
-          }  
+          }
+		
+		request.setAttribute("req_ids", req_ids);
+		request.setAttribute("matricole", matricole);
+		request.setAttribute("nomi", nomi);
+		request.setAttribute("cognomi", cognomi);
+		request.setAttribute("hours", hours);
+		request.setAttribute("req_cfu", req_cfu);
+		request.setAttribute("val_cfu", val_cfu);
+        request.setAttribute("req_num", count);
+        
+        RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");
+        requestDispatcher.forward(request, response);
 	}
 
 }

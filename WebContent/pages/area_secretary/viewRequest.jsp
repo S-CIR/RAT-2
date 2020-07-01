@@ -5,6 +5,24 @@
 <%
 	String pageName = "viewRequest.jsp";
 	String pageFolder = "area_secretary";
+	
+	int num = (int) request.getAttribute("req_num");
+	int req_ids[] = new int[10];
+	String matricole[] = new String[10];
+	String nomi[] = new String[10];
+	String cognomi[] = new String[10];
+	int hours[] = new int[10];
+	int req_cfu[] = new int[10];
+	int val_cfu[] = new int[10];
+	if(num > 0){
+		req_ids =(int[]) request.getAttribute("req_ids");
+		matricole = (String[]) request.getAttribute("matricole");
+		nomi = (String[]) request.getAttribute("nomi");
+		cognomi = (String[]) request.getAttribute("cognomi");
+		hours = (int[]) request.getAttribute("hours");
+		req_cfu = (int[]) request.getAttribute("req_cfu");
+		val_cfu = (int[]) request.getAttribute("val_cfu");
+	}
 %>
 
 <!DOCTYPE html>
@@ -44,7 +62,16 @@
 										</tr>
 									</thead>
 									<tbody id="bodySegretaryBody">
-									
+									<%if(num>0){
+											for(int i=0;i<num;i++){%>
+												<tr><td><%=req_ids[i]%></td><td><%=matricole[i]%></td><td><%=nomi[i]%></td>
+												<td><%=cognomi[i]%></td><td><%=hours[i]%></td>
+												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td>
+												</tr>
+										<%	}
+										  }else{%>
+										  	<tr><td style="text-align:center;"colspan="3">Nessuna richiesta presente.</td></tr>
+										  <%}%>
 									</tbody>
 								</table>
 							</div>
@@ -59,7 +86,7 @@
 
 	<jsp:include page="/base_pieces/includes.jsp" />
 
-	<script>
+	<!--  <script>
 			jQuery(document).ready(function($){
 				$('#bodySegretaryTable').DataTable( {
 			        "order": [[ 0, "desc" ]],
@@ -92,6 +119,6 @@
 			    } );
 			});
 	</script>
-	<script src="<%= request.getContextPath() %>/js/js_viewRequestsSecretary.js"> </script>
+	<script src="<%= request.getContextPath() %>/js/js_viewRequestsSecretary.js"> </script> -->
 </body>
 </html>

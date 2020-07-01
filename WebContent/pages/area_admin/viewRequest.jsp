@@ -5,6 +5,32 @@
 <%
 	String pageName = "viewRequest.jsp";
 	String pageFolder = "area_admin";
+	
+	int num = (int) request.getAttribute("req_num");
+	int req_ids[] = new int[10];
+	String matricole[] = new String[10];
+	String nomi[] = new String[10];
+	String cognomi[] = new String[10];
+	int hours[] = new int[10];
+	Date s_dates[] = new Date[10];
+	Date e_dates[] = new Date[10];
+	int req_cfu[] = new int[10];
+	int val_cfu[] = new int[10];
+	String aziende[] = new String[10];
+	String state_desc[] = new String[10];
+	if(num > 0){
+		req_ids =(int[]) request.getAttribute("req_ids");
+		matricole = (String[]) request.getAttribute("matricole");
+		nomi = (String[]) request.getAttribute("nomi");
+		cognomi = (String[]) request.getAttribute("cognomi");
+		hours = (int[]) request.getAttribute("hours");
+		s_dates = (Date[]) request.getAttribute("s_dates");
+		e_dates = (Date[]) request.getAttribute("e_dates");
+		req_cfu = (int[]) request.getAttribute("req_cfu");
+		val_cfu = (int[]) request.getAttribute("val_cfu");
+		aziende = (String[]) request.getAttribute("aziende");
+		state_desc = (String[]) request.getAttribute("state_desc");
+	}
 %>
 
 <!DOCTYPE html>
@@ -48,6 +74,19 @@
 										</tr>
 									</thead>
 									<tbody id="bodyAdminTable">
+									
+									<%if(num>0){
+											for(int i=0;i<num;i++){%>
+												<tr><td><%=req_ids[i]%></td><td><%=matricole[i]%></td><td><%=nomi[i]%></td>
+												<td><%=cognomi[i]%></td><td><%=hours[i]%></td>
+												<td><%=s_dates[i]%></td><td><%=e_dates[i]%></td>
+												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td>
+												<td><%=aziende[i]%></td><td><%=state_desc[i]%></td>
+												</tr>
+										<%	}
+										  }else{%>
+										  	<tr><td style="text-align:center;"colspan="3">Nessuna richiesta presente.</td></tr>
+										  <%}%>
 
 									</tbody>
 								</table>
@@ -71,7 +110,7 @@
 	<!--End pagewrapper-->
 
 	<jsp:include page="/base_pieces/includes.jsp" />
-	<script>
+	<!--  <script>
 			jQuery(document).ready(function($){
 				$('#adminTable').DataTable( {
 			        "order": [[ 0, "desc" ]],
@@ -105,6 +144,6 @@
 			});
 		</script>
 	<script
-		src="<%= request.getContextPath() %>/js/js_viewRequestsAdmin.js"></script>
+		src="<%= request.getContextPath() %>/js/js_viewRequestsAdmin.js"></script> -->
 </body>
 </html>

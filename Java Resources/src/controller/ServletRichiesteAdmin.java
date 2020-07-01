@@ -1,8 +1,10 @@
 package src.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.ResultSet;
-
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,51 +31,63 @@ public class ServletRichiesteAdmin extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String content = "";
+		int count = 0;
 		ResultSet r=null;
+		int req_ids[] = new int[10];
+		String matricole[] = new String[10];
+		String nomi[] = new String[10];
+		String cognomi[] = new String[10];
+		int hours[] = new int[10];
+		Date s_dates[] = new Date[10];
+		Date e_dates[] = new Date[10];
+		int req_cfu[] = new int[10];
+		int val_cfu[] = new int[10];
+		String aziende[] = new String[10];
+		String state_desc[] = new String[10];
 		
 		try {
-        	//-----recupero richieste
-        	r = RequestDAO.findByState(3);
+        	r = RequestDAO.findByState(1);	//Recupero richieste in un determinato stato
+        	
             if(r!=null) {
-              int count = r.last() ? r.getRow() : 0;
-              if (count > 0) {
-                r.beforeFirst();
-                String classe = "even";
-                
-                while (r.next()) {
-                  int idRequest = r.getInt("id_request");
-                  if (classe.equals("odd")) {
-                    classe = "even";
-                  } else {
-                    classe = "odd";
-                  }
-                  content += "<tr class='" + classe + "' role='row'>";
-                  content += "    <td class='text-center'>" + idRequest + "</td>"; //id richiesta
-                  content += "    <td class='text-center'>" + r.getString("matricola") + "</td>"; //matricola
-                  content += "    <td class='text-center'>" + r.getString("name") + "</td>"; //nome
-                  content += "    <td class='text-center'>" + r.getString("surname") + "</td>"; //cognome
-                  content += "    <td class='text-center'>" + r.getInt("hours") + "</td>"; //ore
-                  content += "    <td class='text-center'>" + r.getDate("start_date") + "</td>"; //data inizio
-                  content += "    <td class='text-center'>" + r.getDate("end_date") + "</td>"; //data fine
-                  content += "    <td class='text-center'>" + r.getInt("requested_cfu") + "</td>"; //cfu richiesti
-                  content += "    <td class='text-center'>" + r.getInt("validated_cfu") + "</td>"; //cfu convalidati
-                  content += "    <td class='text-center'>" + r.getString("nomeazienda") + "</td>"; //nome azienda
-                  content += "    <td class='text-center'>" + r.getString("description") + "</td>"; //descrizione stato
-                  content += "</tr>";
-                }              
-              } else {
-                content += "<tr>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + ">Nessuna Richiesta Disponibile</td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "</tr>";
+            	  int i = 0;
+            	  r.beforeFirst();
+            	  while (r.next()) {
+  	                  req_ids[i]=r.getInt("id_request");
+  	                  matricole[i] = r.getString("matricola");
+  	                  nomi[i] = r.getString("name");
+  	                  cognomi[i] = r.getString("surname");
+  	                  hours[i] = r.getInt("hours");
+  	                  s_dates[i] = r.getDate("start_date");
+  	                  e_dates[i] = r.getDate("end_date");
+  	                  req_cfu[i] = r.getInt("requested_cfu");
+  	                  val_cfu[i] = r.getInt("validated_cfu");
+  	                  aziende[i] = r.getString("nomeazienda");
+  	                  state_desc[i] = r.getString("description");
+  	                  i++;
+            	  }
+            	  count = i;
               }
-            }
-          } catch (Exception e) {
+           }
+		
+		catch (SQLException e) {
             e.printStackTrace();
-          }  
+          }
+		
+		request.setAttribute("req_ids", req_ids);
+		request.setAttribute("matricole", matricole);
+		request.setAttribute("nomi", nomi);
+		request.setAttribute("cognomi", cognomi);
+		request.setAttribute("hours", hours);
+		request.setAttribute("s_dates", s_dates);
+		request.setAttribute("e_dates", e_dates);
+		request.setAttribute("req_cfu", req_cfu);
+		request.setAttribute("val_cfu", val_cfu);
+		request.setAttribute("aziende", aziende);
+        request.setAttribute("state_desc", state_desc);
+        request.setAttribute("req_num", count);
+        
+        RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_admin/viewRequest.jsp");
+        requestDispatcher.forward(request, response);
 	}
 
 }
