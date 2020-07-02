@@ -41,6 +41,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 		int hours[] = new int[10];
 		int req_cfu[] = new int[10];
 		int val_cfu[] = new int[10];
+		String state_desc[] = new String[10];
 		
 		try {
         	r = RequestDAO.findByState(1);	//Recupero richieste in un determinato stato
@@ -56,6 +57,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
   	                  hours[i] = r.getInt("hours");
   	                  req_cfu[i] = r.getInt("requested_cfu");
   	                  val_cfu[i] = r.getInt("validated_cfu");
+  	                  state_desc[i] = r.getString("description");
   	                  i++;
             	  }
             	  count = i;
@@ -73,6 +75,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 		request.setAttribute("hours", hours);
 		request.setAttribute("req_cfu", req_cfu);
 		request.setAttribute("val_cfu", val_cfu);
+		request.setAttribute("state_desc", state_desc);
         request.setAttribute("req_num", count);
         
         RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");

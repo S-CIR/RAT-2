@@ -14,6 +14,7 @@
 	int hours[] = new int[10];
 	int req_cfu[] = new int[10];
 	int val_cfu[] = new int[10];
+	String state_desc[] = new String[10];
 	if(num > 0){
 		req_ids =(int[]) request.getAttribute("req_ids");
 		matricole = (String[]) request.getAttribute("matricole");
@@ -22,6 +23,7 @@
 		hours = (int[]) request.getAttribute("hours");
 		req_cfu = (int[]) request.getAttribute("req_cfu");
 		val_cfu = (int[]) request.getAttribute("val_cfu");
+		state_desc = (String[]) request.getAttribute("state_desc");
 	}
 %>
 
@@ -58,7 +60,8 @@
 											<th class="text-center">Ore</th>
 											<th class="text-center">CFU Richiesti</th>
 											<th class="text-center">CFU Conv.</th>
-											<th class="text-center">Inoltra</th>
+											<th class="text-center">Stato</th>
+											<th class="text-center">Azioni</th>
 										</tr>
 									</thead>
 									<tbody id="bodySegretaryBody">
@@ -66,7 +69,7 @@
 											for(int i=0;i<num;i++){%>
 												<tr><td><%=req_ids[i]%></td><td><%=matricole[i]%></td><td><%=nomi[i]%></td>
 												<td><%=cognomi[i]%></td><td><%=hours[i]%></td>
-												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td>
+												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td><td><%=state_desc[i] %></td>
 												</tr>
 										<%	}
 										  }else{%>
