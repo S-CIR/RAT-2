@@ -121,7 +121,6 @@
 			        }        
 			    } );
 			});
-	</script>
-	<script src="<%= request.getContextPath() %>/js/js_viewRequestsSecretary.js"> </script> -->
+	</script> -->
 </body>
 </html>

@@ -142,8 +142,6 @@
 			        }        
 			    } );
 			});
-		</script>
-	<script
-		src="<%= request.getContextPath() %>/js/js_viewRequestsAdmin.js"></script> -->
+		</script> -->
 </body>
 </html>
