@@ -30,12 +30,14 @@ public class AttachedDAO {
 	public static synchronized boolean doSave(Attached a) {
 		Connection conn = new DBConnection().getInstance().getConn();
 		if (conn != null) {
-			String sql = "INSERT INTO attached (filename, fk_request, fk_user) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO attached (filename, fk_user, fk_request) VALUES (?,?,?)";
+			PreparedStatement stmt;
 			try {
-				PreparedStatement stmt = conn.prepareStatement(sql);
+				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, a.getFilename());
-				stmt.setInt(1, a.getFk_request());
-				stmt.setString(3, a.getFk_user());
+				stmt.setInt(3, a.getFk_request());
+				stmt.setString(2, a.getFk_user());
+				stmt.execute();
 				return true;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

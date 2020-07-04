@@ -62,38 +62,37 @@
 						<div class="content">
 							<div class="news-block-seven">
 								<div class="form-group">
-									<button type="button"
+									<button type="button" style="width:10%;"
 										class="btn btn-primary btn-submit generatePDF"
 										onclick="createPdf()">Genera PDF</button>
 								</div>
 
-								<h2>
-									Richiesta N.<%= idRequest %>
-									</h2>
-									<h2>
-										Trascina o premi sull'apposito riquadro per caricare un file
-										</h2>
-										<div action='<%= request.getContextPath() + "/ServletUploader" %>'
-											class='dropzoneUploader'></div>
-
-										<div class="form-group">
-											<button type="submit" class="btn btn-primary btn-submit"
-												id='aggiungiAllegati'>Concludi</button>
-										</div>
+								<h2>Richiesta N.<%= idRequest %></h2>
+								<h2>Trascina o premi sull'apposito riquadro per caricare un file</h2>
+								<div class='dropzoneUploader'>
+									<form class="form-group" id="upload-form" method="post" action='<%= request.getContextPath() + "/ServletUploader"%>' enctype="multipart/form-data">
+	        							<input style="text-align:center;margin: auto;width:100%;font-size:20px;" type="file" name="file"/>
+	        							<input type="hidden" name="name" id="name" value="<%= name %>" /> 
+										<input type="hidden" name="surname" id="surname" value="<%= surname %>" /> 
+										<input type="hidden" name="startDate" id="startDate" value="<%= startDate %>" /> 
+										<input type="hidden" name="endDate" id="endDate" value="<%= endDate %>" /> 
+										<input type="hidden" name="hours" id="hours" value="<%= hours %>" /> 
+										<input type="hidden" name="matricola" id="matricola" value="<%= matricola %>" /> 
+										<input type="hidden" name="azienda" id="azienda" value="<%= azienda %>" />  
+										<input type="hidden" name="requestedCfu" id="requestedCfu"value="<%= requestedCfu %>" />
+										<input type="hidden" name="idRequest" value="<%= r.getIdRequest() %>" />
+										<input type="hidden" name="mail" value="<%= u.getEmail() %>" />
+	        							<input type="submit" class="btn btn-primary btn-submit" style="width:10%;background-color: #e7e7e7; color: black;" 
+	        									id='aggiungiAllegati' value="Carica"/>
+	    							</form>
+	    						</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<input type="hidden" id="name" value="<%= name %>" /> <input
-				type="hidden" id="surname" value="<%= surname %>" /> <input
-				type="hidden" id="startDate" value="<%= startDate %>" /> <input
-				type="hidden" id="endDate" value="<%= endDate %>" /> <input
-				type="hidden" id="hours" value="<%= hours %>" /> <input type="hidden"
-				id="matricola" value="<%= matricola %>" /> <input type="hidden" id="azienda"
-				value="<%= azienda %>" />  <input type="hidden" id="requestedCfu"
-				value="<%= requestedCfu %>" />
+			
 		</div>
 		<jsp:include page="/base_pieces/footer.jsp" />
 	</div>
@@ -119,7 +118,7 @@
 			doc.text("ORE EFFETUATE :"+$("#hours").val(),10,270)
 			doc.text("ai fini del riconoscimento di N° "+$("#requestedCfu").val()+" CFU relativi allo svolgimento del tirocinio previsto nel proprio piano di studi.",10,290)
 			doc.text("Si allega certificazione",10,310)
-			doc.text("Fisciano, _____________																	Firma studente _________________________________",10,340)
+			doc.text("Fisciano, _____________																Firma studente _________________________________",10,340)
 			doc.text("ATTENZIONE: Il presente modulo va compilato al computer, va quindi stampato, firmato, scannerizzato salvato con il nome che segue questa regola:",10,460)
 			doc.text("Matricola_CognomeNome_Tirocinio. Il certificato di fine tirocinio va scannerizzato e salvato con il nome del file che segue questa regola",10,480)
 			doc.text("Matricola_Cognome_Certificato. I due file vanno inviati a carrierestudenti.di@unisa.iti. L'oggetto della mail deve contenere <Matricola> - Riconoscimento",10,500)
@@ -130,43 +129,6 @@
 			doc.save('a4.pdf')
 		}
 		</script>
-
-
-	<script>
-			$( document ).ready(function() {	
-				$(".dropzoneUploader").dropzone({
-					  maxFiles: <%= requestNumberMaxUpload %>,
-					  acceptedFiles: "<%= requestAllowedExtensionUpload %>",
-					  accept: function(file, done){
-					    done();
-					  },
-					  init: function() {		
-					      this.on("maxfilesexceeded", function(file, errorMessage){
-					    	  this.removeFile(file);
-					    	  showAlert(1, errorMessage);		    	  
-					      });
-	                      
-					      this.on("error", function(file, errorMessage) {
-					    	  this.removeFile(file);
-					    	  showAlert(1, errorMessage);
-	                      });
-	                    
-						  this.on("success", function(file, response) {
-							  var msg = jQuery.parseJSON(response);
-						  	  if(!msg.result){
-						  		showAlert(1, msg.error);
-						  	  }	            		    
-						  	  else{
-						  		file.previewElement.querySelector("[data-dz-name]").innerHTML = msg.content;
-						  	  }
-						  });
-					  }		  						
-				});					
-			});
-		</script>
-	<script src="<%= request.getContextPath() %>/js/filesystem_dropzone.js"></script>
-	<script
-		src="<%= request.getContextPath() %>/js/pages/scripts_uploadAttached.js"></script>
-
+	
 </body>
 </html>

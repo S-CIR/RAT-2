@@ -60,7 +60,7 @@ public class ServletInsertAttachedStudent extends HttpServlet {
 
         if (result == 1) {
         	//stato richiesta di valutazione della segreteria = 2
-            if(RequestDAO.setWorkingSecretaryState(r.getIdRequest(), 2)) {
+            if(RequestDAO.setWorkingSecretaryState(r.getIdRequest())) {
                  redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
                  content = "Allegati inseriti con successo.";
             }else {
