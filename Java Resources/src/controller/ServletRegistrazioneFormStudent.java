@@ -77,7 +77,7 @@ public class ServletRegistrazioneFormStudent extends HttpServlet {
         }
         
         //-----------FINE VERIFICHE
-        
+        System.out.println("verifiche finite");
         
         src.interfaccia.UserInterface user = (src.interfaccia.UserInterface) request.getSession().getAttribute("user");
         int validatedCfu = 0;
@@ -97,12 +97,11 @@ public class ServletRegistrazioneFormStudent extends HttpServlet {
         	  Request r= new Request(hours, requestedCfu, d1, d2, validatedCfu, idState, idAzienda, idUser, matricola);
         	  System.out.println(r.toString());
         	  if(RequestDAO.doSave(r)) {
-        		  Request rf = RequestDAO.retrieveByDateAndUser(r);
+        		  Request rf = RequestDAO.getLastUserRequestPartiallyCompleted((UserInterface) request.getSession().getAttribute("user"));
         		  request.setAttribute("request", rf);
         		  RequestDispatcher rd=getServletContext().getRequestDispatcher("/pages/area_studente/uploadAttached.jsp");
  				  rd.forward(request, response);
         	  }
-
           } else {//ci sono richieste pendenti
               err = "Una richiesta gi&agrave; presentata non &egrave; stata ancora conclusa.";
               //alert richieste pendenti ->uploadAttached

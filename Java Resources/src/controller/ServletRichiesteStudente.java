@@ -3,7 +3,9 @@ package src.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,64 +37,47 @@ public class ServletRichiesteStudente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserInterface u = (UserInterface) request.getSession().getAttribute("user"); 
 		String content = "";
+		int error = 0;
+		int count=0;
+		int req_ids[] = new int[2];
+		String req_states[]= new String[2];
+		String req_filenames[] = new String[2];
 		ResultSet r=null, r2=null;
         if (u != null) {
-          String email = u.getEmail();
-          
+          String email = u.getEmail();    
           try {
-        	//-----recupero richieste
         	r = RequestDAO.findByUserMail(u.getEmail());
-            if(r!=null) {
-              int count = r.last() ? r.getRow() : 0;
-              if (count > 0) {
-                r.beforeFirst();
-                String classe = "even";
-                while (r.next()) {
-                  int idRequest = r.getInt("id_request");
-                  if (classe.equals("odd")) {
-                    classe = "even";
-                  } else {
-                    classe = "odd";
-                  }
-                  content += "<tr class='" + classe + "' role='row'>";
-                  content += "    <td class='text-center'>" + idRequest + "</td>";
-                  content += "    <td class='text-center'>";
-                  
-                  //------recupero allegati
-                  r2 = AttachedDAO.findByRequestId(idRequest);
-                  if (r2!=null) {
-                    int countAttached = r2.last() ? r2.getRow() : 0;
-                    int i = 1;
-                    if (countAttached > 0) {
-                      r2.beforeFirst();
-                      while (r2.next()) {
-                        if (i == countAttached) {
-                          content += "<a href='" + request.getContextPath() + "/Downloader?filename=" + r2.getString("filename") + "&idRequest=" + idRequest + "'>" + r2.getString("filename") + "</a>";
-                        } else {
-                          content += "<a href='" + request.getContextPath() + "/Downloader?filename=" + r2.getString("filename") + "&idRequest=" + idRequest + "'>" + r2.getString("filename") + "</a>" + " - ";
-                        }                        
-                        i++;
-                      }                      
+        	if(r!=null) {
+        		int i = 0;
+        		r.beforeFirst();
+        		while (r.next()) {
+                    System.out.println(r.getInt("id_request")+" "+r.getString("state"));
+                    if(!r.getString("state").equals("Parzialmente Completata")) {
+	                    req_ids[i]=r.getInt("id_request");
+	                    req_states[i]=r.getString("state");
+	                    i++;
                     }
-                  }
-                  
-                  content += "    </td>";
-                  content += "    <td class='text-center'>" + r.getString("state") + "</td>";
-                  content += "</tr>";
-                }              
-              } else {
-                content += "<tr>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + ">Nessuna Richiesta Presente</td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "</tr>";
-              }
-            }
-          } catch (Exception e) {
-            e.printStackTrace();
-          }          
-        } else {
+        		}
+        		count = i;
+        	}
+        	for(int i = 0; i<count;i++) {
+        		String temp = AttachedDAO.findNameByRequestId(req_ids[i]);
+        		if (temp!=null) {
+            		req_filenames[i]= temp;  
+            		System.out.println(req_filenames[0]);
+        		}
+        	}
+          } catch (SQLException e) {
+				e.printStackTrace();
+			
+          }
+          request.setAttribute("req_ids", req_ids);
+          request.setAttribute("req_states", req_states);
+          request.setAttribute("req_filenames", req_filenames);
+          request.setAttribute("req_num", count);
+          RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_studente/viewRequest.jsp");
+          requestDispatcher.forward(request, response);
+        }else {
         	PrintWriter out=response.getWriter();
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Impossibile identificare l'utente, effettua il login');");

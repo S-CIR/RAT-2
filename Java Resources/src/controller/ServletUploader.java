@@ -26,6 +26,7 @@ import src.model.AttachedDAO;
 import src.model.Request;
 import src.model.RequestDAO;
 
+
 /**
  * Servlet implementation class Uploader.
  */
@@ -73,7 +74,7 @@ public class ServletUploader extends HttpServlet {
     String fileName = matricola+"_"+sd+"_"+ed+".pdf";
     InputStream fileContent = filePart.getInputStream();
     
-    File uploads = new File("C:\\Users\\bufal\\Desktop\\RAT_Files\\");
+    File uploads = new File("C:\\Users\\Carmine\\Desktop\\RAT_Files\\");
     File file = new File(uploads, fileName);
 
     try (InputStream input = fileContent) {
@@ -85,7 +86,8 @@ public class ServletUploader extends HttpServlet {
         //settare fk_state della request a 2 (segreteria)
         RequestDAO.setWorkingSecretaryState(idReq);
         //-------------------------
-        red = "pages/area_studente/viewRequest.jsp";
+        
+        red = "/ServletRichiesteStudente";
     } catch (Exception ex) {
         result = 0;
         error = "Impossibile salvare il file";

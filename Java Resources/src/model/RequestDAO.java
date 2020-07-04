@@ -43,10 +43,11 @@ import src.interfaccia.UserInterface;
 			            + "     INNER JOIN azienda a ON r.fk_azienda = a.idazienda "
 			            + "     INNER JOIN state s ON r.fk_state = s.id_state "
 			            + "     INNER JOIN user u ON r.fk_user = u.email "
-			            + "WHERE r.fk_user = ?";
+			            + "WHERE r.fk_user = ? AND r.fk_state = ?";
 				try {
 					PreparedStatement stmt = con.prepareStatement(sql);
 					 stmt.setString(1, userMail);
+					 stmt.setInt(2, 1);
 				     ResultSet res = stmt.executeQuery();
 				     if(res.next())
 				    	 return  res;
@@ -98,12 +99,11 @@ import src.interfaccia.UserInterface;
 		public static int findIdByUserAndMiddleState(String userMail){
 			Connection con = new DBConnection().getInstance().getConn();
 			if(con!=null) {
-				String sql = " SELECT id_request FROM request WHERE fk_user = ? AND fk_state != ? AND fk_state != ?";
+				String sql = " SELECT id_request FROM request WHERE fk_user = ? AND fk_state = ?";
 				try {
 					PreparedStatement stmt = con.prepareStatement(sql);
 					stmt.setString(1, ""+userMail);
-					stmt.setString(2, new SystemAttribute().getValueByKey("request-accepted"));
-			        stmt.setString(3, new SystemAttribute().getValueByKey("request-refused"));
+					stmt.setInt(2, 1);
 					ResultSet res = stmt.executeQuery();
 					if(res.next())
 						return res.getInt("id_request");
@@ -320,6 +320,7 @@ import src.interfaccia.UserInterface;
 			}
 			return null;
 		}
+	}
 		
 		public static synchronized void addCFU(int idrequest) {
 			int new_cfu = prelevaCFU(idrequest);

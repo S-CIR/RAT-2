@@ -10,15 +10,19 @@ import src.controller.DBConnection;
 
 public class AttachedDAO {
 	
-	public static ResultSet findByRequestId(int requestId) {
+	public static String findNameByRequestId(int requestId) {
 		Connection conn = new DBConnection().getInstance().getConn();
+		String f_name="";
 		if (conn != null) {
-			String sql = "SELECT a.filename AS filename FROM attached a WHERE a.fk_request = ?";
+			String sql = "SELECT filename FROM attached WHERE fk_request = ?";
 			try {
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				stmt.setInt(1, requestId);
-				ResultSet res = stmt.executeQuery(sql);
-				return res;
+				ResultSet res = stmt.executeQuery();
+				while(res.next()) {
+					f_name = res.getString("filename");
+				}
+				return f_name;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

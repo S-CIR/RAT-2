@@ -36,17 +36,17 @@ public class ServletLogin extends HttpServlet {
 	     try {
 	        src.interfaccia.UserInterface u = UtenteDAO.verifyLogin(email, password);
 	        if (u!=null) {
-	        	System.out.println("Login effettuato");
+	        	System.out.println("Login effetuato");
 	        	src.interfaccia.UserInterface user = null;
 	        	int type = u.getUser_Type();
 	        	if (type == 0) { // Profilo Studente
 	                redirect ="/ServletRichiesteStudente";
 	                user = u;
 	              } else if (type == 1) { // Profilo Secretary
-	                redirect ="/ServletRichiesteSecretary";
+	                redirect ="/pages/area_Secretary/viewRequest.jsp";
 	                user = u;
 	              } else if (type == 2) { // Profilo Admin
-	                redirect ="/ServletRichiesteAdmin";
+	                redirect ="/pages/area_Admin/viewRequest.jsp";
 	                user = u;
 	              }
 	        	 request.getSession().setAttribute("user", user);
