@@ -61,7 +61,7 @@
 											<th class="text-center">CFU Richiesti</th>
 											<th class="text-center">CFU Conv.</th>
 											<th class="text-center">Stato</th>
-											<th class="text-center">Azioni</th>
+											<th class="text-center">Inoltra</th>
 										</tr>
 									</thead>
 									<tbody id="bodySegretaryBody">

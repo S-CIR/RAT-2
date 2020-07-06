@@ -32,6 +32,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int stateId = Integer.parseInt(request.getParameter("stateId"));
 		int count = 0;
 		ResultSet r=null;
 		int req_ids[] = new int[10];
@@ -44,7 +45,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 		String state_desc[] = new String[10];
 		
 		try {
-        	r = RequestDAO.findByState(1);	//Recupero richieste in un determinato stato
+        	r = RequestDAO.findByState(stateId);	//Recupero richieste in un determinato stato
         	
             if(r!=null) {
             	  int i = 0;
