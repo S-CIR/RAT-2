@@ -83,6 +83,7 @@
 												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td>
 												<td><%=aziende[i]%></td><td><%=state_desc[i]%></td>
 												<td><a href="<%=request.getContextPath()%>/ServletInoltro?req_id=<%=req_ids[i]%>&next_state=4&user_id=2" class="btn btn-primary btn-submit">Accetta</a></td>
+												<td><a href="<%=request.getContextPath()%>/ServletInoltro?req_id=<%=req_ids[i]%>&next_state=5&user_id=2" class="btn btn-primary btn-submit">Rifiuta</a></td>
 												</tr>
 										<%	}
 										  }else{%>
