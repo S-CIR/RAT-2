@@ -43,7 +43,7 @@ public class ServletLogin extends HttpServlet {
 	                redirect ="/ServletRichiesteStudente";
 	                user = u;
 	              } else if (type == 1) { // Profilo Secretary
-	                redirect = request.getContextPath() + "/pages/area_secretary/secretaryHome.jsp";
+	                redirect = "/pages/area_secretary/secretaryHome.jsp";
 	                user = u;
 	              } else if (type == 2) { // Profilo Admin
 	                redirect ="/ServletRichiesteAdmin";

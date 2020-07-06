@@ -12,12 +12,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/json-simple-1.1.jar">
+	<classpathentry kind="lib" path="C:/Users/Fra&amp;Lor/Desktop/UNISA Lorenzo/Ingegneria del Software/Progetto/json-simple-1.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/mysql-connector-java-8.0.9-rc.jar">
+	<classpathentry kind="lib" path="C:/Users/Fra&amp;Lor/Desktop/apache-tomcat-9.0.27/lib/mysql-connector-java-8.0.15.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

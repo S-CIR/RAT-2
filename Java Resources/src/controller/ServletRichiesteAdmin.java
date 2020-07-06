@@ -46,7 +46,7 @@ public class ServletRichiesteAdmin extends HttpServlet {
 		String state_desc[] = new String[10];
 		
 		try {
-        	r = RequestDAO.findByState(1);	//Recupero richieste in un determinato stato
+        	r = RequestDAO.findByState(3);	//Recupero richieste in un determinato stato
         	
             if(r!=null) {
             	  int i = 0;

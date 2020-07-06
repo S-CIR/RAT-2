@@ -14,6 +14,7 @@
 <title>Area Segreteria: Home</title>
 </head>
 <body>
+<div class="page-wrapper">
 
 <jsp:include page="/base_pieces/header.jsp">
 	<jsp:param name="pageName" value="<%= pageName %>" />
@@ -33,21 +34,23 @@
 										<h2 class="text-center">Area Segreteria</h2>
 										<p></p>
 									</div>
-									<a href="/ServletRichiesteSecretary?stateId=1" class="btn btn-primary btn-lg btn-block"
+									<a href="<%=request.getContextPath()%>/ServletRichiesteSecretary?stateId=2" class="btn btn-primary btn-lg btn-block"
 										role="button" aria-pressed="true">Visualizza richieste da inoltrare</a>
 									<p></p>
-									<a href="/ServletRichiesteSecretary?stateId=4"
+									<a href="<%=request.getContextPath()%>/ServletRichiesteSecretary?stateId=4"
 										class="btn btn-primary btn-lg btn-block" role="button"
 										aria-pressed="true">Visualizza richieste da convalidare</a>
 									<p></p>
 								</div>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	<jsp:include page="/base_pieces/footer.jsp" />
+	</div>
+<jsp:include page="/base_pieces/includes.jsp" />
 
 </body>
 </html>

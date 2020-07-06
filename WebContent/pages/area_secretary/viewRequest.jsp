@@ -61,7 +61,7 @@
 											<th class="text-center">CFU Richiesti</th>
 											<th class="text-center">CFU Conv.</th>
 											<th class="text-center">Stato</th>
-											<th class="text-center">Inoltra</th>
+											<th class="text-center">Azioni</th>
 										</tr>
 									</thead>
 									<tbody id="bodySegretaryBody">
@@ -70,6 +70,11 @@
 												<tr><td><%=req_ids[i]%></td><td><%=matricole[i]%></td><td><%=nomi[i]%></td>
 												<td><%=cognomi[i]%></td><td><%=hours[i]%></td>
 												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td><td><%=state_desc[i] %></td>
+												<%if (state_desc[i].equals("In elaborazione dalla Segreteria")){ %>
+													<td><a href="<%=request.getContextPath()%>/ServletInoltro?req_id=<%=req_ids[i]%>&next_state=3&user_id=1" class="btn btn-primary btn-submit">Inoltra</a></td>
+													<%} else if (state_desc[i].equals("Accettata e In elaborazione dal Consiglio Didattico")) {%>
+													<td><a href="<%=request.getContextPath()%>/ServletConvalidaCFU?req_id=<%=req_ids[i]%>" class="btn btn-primary btn-submit">Convalida</a></td>
+													<%} %>
 												</tr>
 										<%	}
 										  }else{%>
