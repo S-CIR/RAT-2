@@ -320,13 +320,28 @@ import src.interfaccia.UserInterface;
 			}
 			return null;
 		}
-	}
+		
+		public static synchronized void inoltra(int idrequest, int stato) {
+
+			Connection con = new DBConnection().getInstance().getConn();
+			String sql = "UPDATE request SET fk_state =? WHERE id_request=?";
+			PreparedStatement stmt;
+			try {
+				stmt = con.prepareStatement(sql);
+				stmt.setInt(1, stato);
+				stmt.setInt(2, idrequest);
+				stmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
 		
 		public static synchronized void addCFU(int idrequest) {
 			int new_cfu = prelevaCFU(idrequest);
 
 			Connection con = new DBConnection().getInstance().getConn();
-			String sql = "UPDATE request SET validated_cfu=? WHERE id_request=?";
+			String sql = "UPDATE request SET validated_cfu=?, fk_state =6 WHERE id_request=?";
 			PreparedStatement stmt;
 			try {
 				stmt = con.prepareStatement(sql);

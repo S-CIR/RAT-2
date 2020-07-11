@@ -25,11 +25,11 @@
           "<li><a href=\"" + request.getContextPath() + "/pages/logout.jsp\">Disconnetti</a></li>";
     }
   } else if (pageFolder.equals("area_secretary")) { //se stiamo in una pagina dell'area segreteria
-	  logoRedirect = request.getContextPath()+"/pages/area_secretary/viewRequest.jsp";
+	  logoRedirect = request.getContextPath()+"/pages/area_secretary/secretaryHome.jsp";
   
-    if (pageName.equals("viewRequest.jsp")) {
-      menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
-          + "/pages/viewRequest.jsp\">Richieste</a></li>";
+    if (pageName.equals("viewRequest.jsp") || pageName.equals("secretaryHome.jsp")) {
+      menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/pages/" + pageFolder
+          + "/viewRequest.jsp\">Richieste</a></li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/pages/logout.jsp\">Disconnetti</a></li>";
     }

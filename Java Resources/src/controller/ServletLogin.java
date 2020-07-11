@@ -43,10 +43,10 @@ public class ServletLogin extends HttpServlet {
 	                redirect ="/ServletRichiesteStudente";
 	                user = u;
 	              } else if (type == 1) { // Profilo Secretary
-	                redirect ="/pages/area_Secretary/viewRequest.jsp";
+	                redirect = "/pages/area_secretary/secretaryHome.jsp";
 	                user = u;
 	              } else if (type == 2) { // Profilo Admin
-	                redirect ="/pages/area_Admin/viewRequest.jsp";
+	                redirect ="/ServletRichiesteAdmin";
 	                user = u;
 	              }
 	        	 request.getSession().setAttribute("user", user);

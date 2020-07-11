@@ -82,6 +82,8 @@
 												<td><%=s_dates[i]%></td><td><%=e_dates[i]%></td>
 												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td>
 												<td><%=aziende[i]%></td><td><%=state_desc[i]%></td>
+												<td><a href="<%=request.getContextPath()%>/ServletInoltro?req_id=<%=req_ids[i]%>&next_state=4&user_id=2" class="btn btn-primary btn-submit">Accetta</a>
+												<a href="<%=request.getContextPath()%>/ServletInoltro?req_id=<%=req_ids[i]%>&next_state=5&user_id=2" class="btn btn-primary btn-submit">Rifiuta</a></td>
 												</tr>
 										<%	}
 										  }else{%>
@@ -91,13 +93,13 @@
 									</tbody>
 								</table>
 								
-								<div align="center">
+								<!--  <div align="center">
 									<button class="btn btn-primary btn-action generateExcel" id="generateExcelAccepted"
 										title="Genera File Excel - Richieste Accettate">Richieste Accettate</button>
 									
 									<button class="btn btn-primary btn-action generateExcel" id="generateExcelRefused"
 										title="Genera File Excel - Richieste Rifiutate">Richieste Rifiutate</button>								
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</div>

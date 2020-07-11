@@ -70,6 +70,12 @@
 												<tr><td><%=req_ids[i]%></td><td><%=matricole[i]%></td><td><%=nomi[i]%></td>
 												<td><%=cognomi[i]%></td><td><%=hours[i]%></td>
 												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td><td><%=state_desc[i] %></td>
+												<%if (state_desc[i].equals("In elaborazione dalla Segreteria")){ %>
+													<td><a href="<%=request.getContextPath()%>/ServletInoltro?req_id=<%=req_ids[i]%>&next_state=3&user_id=1" class="btn btn-primary btn-submit">Inoltra</a>
+													<%} else if (state_desc[i].equals("Accettata e In elaborazione dal Consiglio Didattico")) {%>
+													<td><a href="<%=request.getContextPath()%>/ServletConvalidaCFU?req_id=<%=req_ids[i]%>" class="btn btn-primary btn-submit">Convalida</a>
+													<%} %>
+													<a href="<%=request.getContextPath()%>/ServletInoltro?req_id=<%=req_ids[i]%>&next_state=7&user_id=1" class="btn btn-primary btn-submit">Rifiuta</a></td>
 												</tr>
 										<%	}
 										  }else{%>
