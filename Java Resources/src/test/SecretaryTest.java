@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import src.model.Admin;
 import src.model.Secretary;
+import src.model.UtenteDAO;
 
 class SecretaryTest {
 	
@@ -112,5 +114,14 @@ class SecretaryTest {
 		Secretary se=new Secretary("Mario","Rossi",'M',"m.rossi12@unisa.it","pass1",1);
 		se.setUser_Type(0);
 		assertEquals(0,se.getUser_Type());			
-	}		
+	}
+	
+	//insert
+	@Test 
+	void testInsert() {
+		Secretary se=new Secretary("Mario","Rossi",'M',"m.rossi12@unisa.it","pass1",1);
+		int res=se.insert();
+		assertEquals(0,res);
+		UtenteDAO.doDelete(se);		
+	}
 }

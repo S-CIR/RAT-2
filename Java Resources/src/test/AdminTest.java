@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import src.model.Admin;
+import src.model.UtenteDAO;
 
 class AdminTest {
 	
@@ -113,5 +114,15 @@ class AdminTest {
 		Admin ad=new Admin("Mario","Rossi",'M',"m.rossi12@unisa.it","pass1",2);
 		ad.setUser_Type(0);
 		assertEquals(0,ad.getUser_Type());		
-	}		
+	}	
+	
+	//insert
+	@Test 
+	void testInsert() {
+		Admin ad=new Admin("Mario","Rossi",'M',"m.rossi12@unisa.it","pass1",2);
+		int res=ad.insert();
+		assertEquals(0,res);
+		UtenteDAO.doDelete(ad);
+		
+	}
 }
