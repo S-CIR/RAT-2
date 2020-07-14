@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import src.interfaccia.UserInterface;
 import src.model.Student;
 import src.model.UtenteDAO;
-import src.model.Utils;
 
 import org.json.simple.JSONObject;
 
@@ -104,7 +103,7 @@ public class ServletRegistrazioneStudente extends HttpServlet {
         int i = s.insert();        
         if(i==0) {
         	content = "Registrazione effettuata con successo";
-        	redirect = "pages/area_studente/viewRequest.jsp";
+        	redirect = "pages/login.jsp";
             request.getSession().setAttribute("user", s);
         	System.out.println(content);
         	result = 1;
@@ -114,15 +113,17 @@ public class ServletRegistrazioneStudente extends HttpServlet {
         	System.out.println(error);
         }
         
+        RequestDispatcher rd=request.getRequestDispatcher(redirect);
+    	rd.forward(request, response);
 
-        JSONObject res = new JSONObject();
+        /*JSONObject res = new JSONObject();
         res.put("result", result);
         res.put("error", error);
         res.put("content", content);
         res.put("redirect", redirect);
         PrintWriter out = response.getWriter();
         response.setContentType("json"); 
-        out.println(res);
+        out.println(res);*/
               
 	}
 
