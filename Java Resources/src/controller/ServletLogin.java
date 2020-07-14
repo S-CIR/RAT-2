@@ -31,7 +31,7 @@ public class ServletLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String redirect="";
 		 String email = request.getParameter("email");
-	     String password = new src.model.Utils().generatePwd(request.getParameter("password"));
+	     String password = new src.controller.Utils().generatePwd(request.getParameter("password"));
 	     RequestDispatcher requestDispatcher;
 	     try {
 	        src.interfaccia.UserInterface u = UtenteDAO.verifyLogin(email, password);
