@@ -123,6 +123,5 @@ class AdminTest {
 		int res=ad.insert();
 		assertEquals(0,res);
 		UtenteDAO.doDelete(ad);
-		
 	}
 }
