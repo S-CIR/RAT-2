@@ -60,7 +60,7 @@
 										  }else{%>
 										  	<tr><td style="text-align:center;"colspan="3">Nessuna richiesta presente.</td></tr>
 										  <%}%>
-									</tbody>
+									</tbody> 
 								</table>
 
 							</div>
