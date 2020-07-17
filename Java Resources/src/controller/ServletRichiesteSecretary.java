@@ -31,7 +31,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int stateId = Integer.parseInt(request.getParameter("stateId"));
 		int count = 0;
 		ResultSet r=null;
