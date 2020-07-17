@@ -22,22 +22,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/mockito-all-2.0.2-beta.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/mysql-connector-java-5.1.49.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/other/spring-test-5.1.4.RELEASE.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/other/spring-core-5.1.4.RELEASE.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -47,7 +32,22 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/other/spring-web-5.1.4.RELEASE.jar">
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/spring-web-5.1.4.RELEASE.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/spring-test-5.1.4.RELEASE.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/spring-core-5.1.4.RELEASE.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/mockito-all-2.0.2-beta.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
