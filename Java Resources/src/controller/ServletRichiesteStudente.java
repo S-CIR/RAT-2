@@ -34,7 +34,7 @@ public class ServletRichiesteStudente extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserInterface u = (UserInterface) request.getSession().getAttribute("user"); 
 		String content = "";
 		int error = 0;
@@ -71,13 +71,16 @@ public class ServletRichiesteStudente extends HttpServlet {
 				e.printStackTrace();
 			
           }
+          response.setContentType("ok");
           request.setAttribute("req_ids", req_ids);
           request.setAttribute("req_states", req_states);
           request.setAttribute("req_filenames", req_filenames);
           request.setAttribute("req_num", count);
           RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_studente/viewRequest.jsp");
           requestDispatcher.forward(request, response);
+          
         }else {
+        	response.setContentType("error");
         	PrintWriter out=response.getWriter();
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Impossibile identificare l'utente, effettua il login');");
@@ -89,7 +92,7 @@ public class ServletRichiesteStudente extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

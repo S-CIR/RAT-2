@@ -78,6 +78,14 @@ public class Student implements src.interfaccia.UserInterface{
 	public void setUser_Type(int user_Type) {
 		this.user_Type = user_Type;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", surname=" + surname + ", gender=" + gender + ", email=" + email
+				+ ", password=" + password + ", user_Type=" + user_Type + "]";
+	}
+	
+	
 	
 }
 
