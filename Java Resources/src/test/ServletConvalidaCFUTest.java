@@ -49,6 +49,12 @@ public class ServletConvalidaCFUTest extends Mockito {
 		servlet.doGet(request, response);
 	}
 	
+	@Test
+	public void testDoPost() throws ServletException, IOException {
+		request.addParameter("req_id", "20");
+		servlet.doPost(request, response);
+	}
+	
 	@After
 	public void deleteSetup() {
 		UtenteDAO.doDelete(st);

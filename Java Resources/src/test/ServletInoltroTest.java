@@ -57,6 +57,23 @@ public class ServletInoltroTest extends Mockito {
 		request.addParameter("user_id","2");
 		servlet.doGet(request,response);
 	}
+	
+	@Test
+	public void testInoltroOther() throws ServletException, IOException {
+		request.addParameter("req_id","30");
+		request.addParameter("next_state","5");
+		request.addParameter("user_id","3");
+		servlet.doGet(request,response);
+	}
+	
+	@Test
+	public void testDoPost() throws ServletException, IOException {
+		request.addParameter("req_id","30");
+		request.addParameter("next_state","3");
+		request.addParameter("user_id","1");
+		servlet.doPost(request,response);
+	}
+	
 	@After
 	public void deleteSetup() {
 		UtenteDAO.doDelete(st);

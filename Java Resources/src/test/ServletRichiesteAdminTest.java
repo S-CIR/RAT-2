@@ -54,6 +54,11 @@ public class ServletRichiesteAdminTest extends Mockito {
 		servlet.doPost(request,response);
 	}
 	
+	@Test
+	public void testdoGet() throws ServletException, IOException {
+		servlet.doGet(request, response);
+	}
+	
 	@After
 	public void deleteSetup() {
 		UtenteDAO.doDelete(st);

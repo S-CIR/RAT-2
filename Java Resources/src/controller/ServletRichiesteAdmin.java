@@ -25,7 +25,7 @@ public class ServletRichiesteAdmin extends HttpServlet {
         super();
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 	
@@ -86,7 +86,7 @@ public class ServletRichiesteAdmin extends HttpServlet {
         request.setAttribute("state_desc", state_desc);
         request.setAttribute("req_num", count);
         
-        RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_admin/viewRequest.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/pages/area_admin/viewRequest.jsp");
         requestDispatcher.forward(request, response);
 	}
 

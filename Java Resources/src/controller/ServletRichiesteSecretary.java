@@ -26,7 +26,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
     }
 
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		doPost(request, response);
 	}
 
@@ -79,7 +79,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 		request.setAttribute("state_desc", state_desc);
         request.setAttribute("req_num", count);
         
-        RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");
         requestDispatcher.forward(request, response);
 	}
 

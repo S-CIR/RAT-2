@@ -49,6 +49,12 @@ public class ServletRichiesteSecretaryTest extends Mockito {
 		servlet.doPost(request, response);
 	  }
 	
+	@Test
+	public void testdoGet() throws ServletException, IOException {
+		request.addParameter("stateId", "10"); //il result set è null in questo caso (si testa il secondo branch dell'if)
+		servlet.doGet(request, response);
+	  }
+	
 	@After
 	public void deleteSetup() {
 		UtenteDAO.doDelete(st);
