@@ -30,7 +30,7 @@ public class ServletRichiesteAdmin extends HttpServlet {
 	}
 	
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int count = 0;
 		ResultSet r=null;
 		int req_ids[] = new int[10];
