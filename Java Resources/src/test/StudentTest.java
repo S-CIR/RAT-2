@@ -107,6 +107,12 @@ class StudentTest {
 		int res=student.insert();
 		assertEquals(0,res);
 		UtenteDAO.doDelete(student);
+	}
+	@Test 
+	void testToString() {
+		Student student=new Student("name","surname",'m',"n.surname@email.com","password",0);
+		String s="Student [name=name, surname=surname, gender=m, email=n.surname@email.com, password=password, user_Type=0]";
+		assertEquals(s,student.toString());
 		
 	}
 

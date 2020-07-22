@@ -38,15 +38,15 @@
 									</div>
 									<form id="login" action="${pageContext.request.contextPath}/ServletLogin" method="post">
 										<div class="form-group">
-											<input type="email" class="form-control" name="email"
+											<input id="user" type="email" class="form-control" name="email"
 												placeholder="Email" minlength="6" required>
 										</div>
 										<div class="form-group">
-											<input type="password" class="form-control" name="password"
+											<input id="password" type="password" class="form-control" name="password"
 												placeholder="Password" minlength="8" required>
 										</div>
 										<div class="form-group">
-											<button type="submit" class="btn btn-primary btn-submit">Accedi</button>
+											<button id="submit" type="submit" class="btn btn-primary btn-submit">Accedi</button>
 										</div>
 									</form>
 								</div>

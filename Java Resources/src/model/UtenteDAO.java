@@ -11,7 +11,7 @@ import src.interfaccia.UserInterface;
 
 public class UtenteDAO {
 	
-	private static boolean ifExist (String mail) {
+	public static boolean ifExist (String mail) {
 		Connection con = new DBConnection().getInstance().getConn();
 		if(con!=null) {
 			String sql = "SELECT * FROM user WHERE user.email=?";

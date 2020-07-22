@@ -76,7 +76,7 @@ public class ServletRichiesteStudente extends HttpServlet {
           request.setAttribute("req_states", req_states);
           request.setAttribute("req_filenames", req_filenames);
           request.setAttribute("req_num", count);
-          RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_studente/viewRequest.jsp");
+          RequestDispatcher requestDispatcher=request.getRequestDispatcher("/pages/area_studente/viewRequest.jsp");
           requestDispatcher.forward(request, response);
           
         }else {

@@ -122,7 +122,7 @@
 										</div>
 
 										<div class="form-group">
-											<button type="submit" class="btn btn-primary btn-submit">Invia</button>
+											<button id="submit" type="submit" class="btn btn-primary btn-submit">Invia</button>
 										</div>
 
 										<div class="clearfix"></div>
