@@ -36,7 +36,7 @@
 
 		<div class="sidebar-page-container basePage viewRequestStudent">
 			<form class="form-group" action="pages/area_studente/form.jsp">
-			<button type="submit" style="margin:auto; display:block; width:20%;font-size:20px;" class="btn btn-primary btn-submit" <%if(num==2){%>disabled<%}%>>Inserisci una nuova richiesta</button>
+			<button id="insertReq" type="submit" style="margin:auto; display:block; width:20%;font-size:20px;" class="btn btn-primary btn-submit" <%if(num==2){%>disabled<%}%>>Inserisci una nuova richiesta</button>
 		</form>
 			<div class="auto-container">
 				<div class="row clearfix">
