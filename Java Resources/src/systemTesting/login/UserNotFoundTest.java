@@ -14,7 +14,7 @@ public class UserNotFoundTest {
 	private WebDriver driver;
 	@Before
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver","C:\\Users\\Carmine\\Documents\\RAT-Richiesta Attestazione Tirocinio\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\cirie\\Eclipse-Workspace-RAT2.0\\SeleniumFirefox\\geckodriver.exe");
 	    driver = new FirefoxDriver();
 	}
 
