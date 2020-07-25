@@ -15,6 +15,7 @@
 	int req_cfu[] = new int[10];
 	int val_cfu[] = new int[10];
 	String state_desc[] = new String[10];
+	String req_filenames[] = new String[10];
 	if(num > 0){
 		req_ids =(int[]) request.getAttribute("req_ids");
 		matricole = (String[]) request.getAttribute("matricole");
@@ -24,6 +25,7 @@
 		req_cfu = (int[]) request.getAttribute("req_cfu");
 		val_cfu = (int[]) request.getAttribute("val_cfu");
 		state_desc = (String[]) request.getAttribute("state_desc");
+		req_filenames = (String[]) request.getAttribute("req_filenames");
 	}
 %>
 
@@ -54,6 +56,7 @@
 									<thead>
 										<tr>
 											<th class="text-center">ID</th>
+											<th class="text-center">Allegati</th>
 											<th class="text-center">Matricola</th>
 											<th class="text-center">Nome</th>
 											<th class="text-center">Cognome</th>
@@ -67,7 +70,7 @@
 									<tbody id="bodySegretaryBody">
 									<%if(num>0){
 											for(int i=0;i<num;i++){%>
-												<tr><td><%=req_ids[i]%></td><td><%=matricole[i]%></td><td><%=nomi[i]%></td>
+												<tr><td><%=req_ids[i]%></td><td><%=req_filenames[i]%></td><td><%=matricole[i]%></td><td><%=nomi[i]%></td>
 												<td><%=cognomi[i]%></td><td><%=hours[i]%></td>
 												<td><%=req_cfu[i]%></td><td><%=val_cfu[i]%></td><td><%=state_desc[i] %></td>
 												<%if (state_desc[i].equals("In elaborazione dalla Segreteria")){ %>
