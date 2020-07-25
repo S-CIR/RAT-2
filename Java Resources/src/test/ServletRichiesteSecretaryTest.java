@@ -2,23 +2,14 @@ package src.test;
 
 import static org.junit.Assert.*;
 
-<<<<<<< HEAD
 import org.junit.Test;
-=======
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
->>>>>>> 97a3d138b8e70afae1964af7bc74445ebe462a8a
 
-public class ServletRichiesteSecretaryTest {
+import javax.servlet.ServletException;
 
-<<<<<<< HEAD
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
-=======
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,5 +61,5 @@ public class ServletRichiesteSecretaryTest extends Mockito {
 		RequestDAO.doDelete(re);
 	}
 	
->>>>>>> 97a3d138b8e70afae1964af7bc74445ebe462a8a
+
 }
