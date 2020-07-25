@@ -20,15 +20,15 @@ public class ServletConvalidaCFU extends HttpServlet {
         super();
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int req_id = Integer.parseInt(request.getParameter("req_id"));
 		RequestDAO.addCFU(req_id);
 		
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/ServletRichiesteSecretary?stateId=4");
+		RequestDispatcher requestDispatcher=request.getRequestDispatcher("/ServletRichiesteSecretary?stateId=4");
         requestDispatcher.forward(request, response);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
