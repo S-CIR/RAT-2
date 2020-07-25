@@ -15,7 +15,10 @@ import src.interfaccia.UserInterface;
 import src.model.Student;
 import src.model.UtenteDAO;
 import src.controller.Utils;
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 /**
  * Servlet implementation class ServletRegistrazioneStudente
@@ -23,6 +26,7 @@ import src.controller.Utils;
 @WebServlet("/ServletRegistrazioneStudente")
 public class ServletRegistrazioneStudente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ArrayList<String> vars = new ArrayList<String>();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,7 +39,7 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("Sono nella servlet");
@@ -44,7 +48,11 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	    String error = "";
 	    String content = "";
 	    String redirect = ""; 
+<<<<<<< HEAD
 	    ArrayList<String> vars = new ArrayList<String>(), errs= new ArrayList<String>();
+=======
+	    ArrayList<String> errs= new ArrayList<String>();
+>>>>>>> master
 	    
 	    //-------------------------INIZIO VERIFICHE ---------------------------
 	    //verifica nome
@@ -84,8 +92,12 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	    	errs.add("mail");
 	    	vars.add(2,"");
 	    }
+<<<<<<< HEAD
        
         
+=======
+
+>>>>>>> master
         //verifica sex
         char sex = request.getParameter("sex").charAt(0);
         System.out.println(sex);
@@ -100,6 +112,11 @@ public class ServletRegistrazioneStudente extends HttpServlet {
         //uno maiuscolo e deve avere lunghezza min 8 e max 20
         String pass = request.getParameter("password");
         String ver = request.getParameter("verifyPassword");
+<<<<<<< HEAD
+=======
+        System.out.println("!!"+ver);
+        System.out.println(pass);
+>>>>>>> master
         if(pass.equals(ver)) {
 	        try {
 		    	validate(pass, "pass", "password");
@@ -109,8 +126,15 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 		    	errs.add("pass");
 		    	vars.add(4,"");
 		    }
+<<<<<<< HEAD
         }else {
         	errs.add("verPass");
+=======
+        }
+        else {
+        	System.out.println("errore verifica password");
+			errs.add("verifica password");
+>>>>>>> master
         }
         
         //cripta password prima di salvarla nel DB
@@ -143,7 +167,7 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
@@ -199,3 +223,4 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	}
 
 }
+

@@ -40,6 +40,7 @@
 											registrarti</p>
 									</div>
 									<form id="signUp" action="${pageContext.request.contextPath}/ServletRegistrazioneStudente" method="post">
+<<<<<<< HEAD
 										<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<input id="nome" type="text" class="form-control" name="nome"
 												placeholder="Nome" minlength="1" maxlength="20" required>
@@ -49,23 +50,47 @@
 												placeholder="Cognome" minlength="1" maxlength="20" required>
 										</div>
 										<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+=======
+										<div  class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<input id="nome" type="text" class="form-control" name="nome"
+												placeholder="Nome" minlength="1" maxlength="20" required>
+										</div>
+										<div  class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<input id="cognome" type="text" class="form-control" name="cognome"
+												placeholder="Cognome" minlength="1" maxlength="20" required>
+										</div>
+										<div  class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+>>>>>>> master
 											<input id="email" type="email" class="form-control" name="email"
 												placeholder="Email" minlength="1" required>
 										</div>
 
+<<<<<<< HEAD
 										<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+=======
+										<div  class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+>>>>>>> master
 											<label id="sex" class="radio-inline"><input type="radio"
 												class="sex" name="sex" value="M" required>M</label> <label
 												class="radio-inline"><input type="radio" class="sex"
 												name="sex" value="F" required>F</label>
 										</div>
 
+<<<<<<< HEAD
 										<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<input id="password" type="password" class="form-control" name="password"
 												placeholder="Password" minlength="8" required>
 										</div>
 										<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<input id="verifica"  type="password" class="form-control"
+=======
+										<div  class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<input id="password" type="password" class="form-control" name="password"
+												placeholder="Password" minlength="8" required>
+										</div>
+										<div  class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<input id="verifica" type="password" class="form-control"
+>>>>>>> master
 												name="verifyPassword" placeholder="Verifica Password"
 												minlength="8" required>
 										</div>

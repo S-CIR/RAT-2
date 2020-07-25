@@ -5,17 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import src.interfaccia.*;
-
-
-
 public class Request {
 	
 	//COSTRUTTORI--------------------------------
 	
 	public Request () {}
-	
-	
 	
 	public Request(int idRequest, int hours, int requestCfu, Date startDate, Date endDate, int validatedCfu,
 			int fk_state, int fk_azienda, String fk_user, String matricola) {
@@ -31,8 +25,6 @@ public class Request {
 		this.fk_user = fk_user;
 		this.matricola = matricola;
 	}
-
-
 
 	public Request(int idRequest, int hours, int requestCfu, Date startDate, Date endDate, int validatedCfu,
 			List<Attached> attached, int fk_state, int fk_azienda, String fk_user, String matricola) {
@@ -98,10 +90,6 @@ public class Request {
 
 	//GETTERS-------------------------------------
 	
-	public static SimpleDateFormat getSdf () {
-		return sdf;
-	}
-	
 	public String getMatricola() {
 		return matricola;
 	}
@@ -152,10 +140,6 @@ public class Request {
 		this.matricola = matricola;
 	}
 	
-	public static void setSdf (SimpleDateFormat sdf) {
-		Request.sdf = sdf;
-	}
-
 	public void setIdRequest (int idRequest) {
 		this.idRequest = idRequest;
 	}

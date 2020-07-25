@@ -11,7 +11,8 @@ import src.controller.DBConnection;
 public class AttachedDAO {
 	
 	public static String findNameByRequestId(int requestId) {
-		Connection conn = new DBConnection().getInstance().getConn();
+		new DBConnection();
+		Connection conn = DBConnection.getInstance().getConn();
 		String f_name="";
 		if (conn != null) {
 			String sql = "SELECT filename FROM attached WHERE fk_request = ?";
@@ -32,7 +33,8 @@ public class AttachedDAO {
 	}
 	
 	public static synchronized boolean doSave(Attached a) {
-		Connection conn = new DBConnection().getInstance().getConn();
+		new DBConnection();
+		Connection conn = DBConnection.getInstance().getConn();
 		if (conn != null) {
 			String sql = "INSERT INTO attached (filename, fk_user, fk_request) VALUES (?,?,?)";
 			PreparedStatement stmt;
@@ -52,7 +54,8 @@ public class AttachedDAO {
 	}
 	
 	private static boolean ifExist (int id, int requestid, String userid) {
-		Connection conn = new DBConnection().getInstance().getConn();
+		new DBConnection();
+		Connection conn = DBConnection.getInstance().getConn();
 		
 		if (conn != null) {
 			String sql = "SELECT * FROM attached WHERE id_attached = ? AND fk_request = ? AND fk_user = ?";
@@ -75,7 +78,8 @@ public class AttachedDAO {
 	}
 	
 	public static synchronized void doSaveOrUpdate (Attached a) {
-		Connection conn = new DBConnection().getInstance().getConn();
+		new DBConnection();
+		Connection conn = DBConnection.getInstance().getConn();
 		if (!ifExist(a.getIdAttached(), a.getFk_request(), a.getFk_user())) {
 			doSave(a);
 		}
@@ -98,7 +102,8 @@ public class AttachedDAO {
 	}
 	
 	public static synchronized void doDelete (Attached a) {
-		Connection conn = new DBConnection().getInstance().getConn();
+		new DBConnection();
+		Connection conn = DBConnection.getInstance().getConn();
 		if (ifExist(a.getIdAttached(), a.getFk_request(), a.getFk_user())) {
 			String sql = "DELETE FROM attached WHERE (id_attached = ?)";
 			

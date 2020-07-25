@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import src.interfaccia.UserInterface;
-import src.model.AttachedDAO;
 import src.model.RequestDAO;
 
 

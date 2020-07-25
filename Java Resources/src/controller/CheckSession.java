@@ -2,12 +2,8 @@ package src.controller;
 
 import src.interfaccia.UserInterface;
 import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javax.servlet.http.HttpSession;
 
-import src.model.Secretary;
-import src.model.Student;
 
 
 
