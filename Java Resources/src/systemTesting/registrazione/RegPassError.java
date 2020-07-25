@@ -13,7 +13,7 @@ public class RegPassError {
 
 	  @Before
 	  public void setUp() throws Exception {
-	    System.setProperty("webdriver.gecko.driver","C:\\Users\\cirie\\Eclipse-Workspace-RAT2.0\\SeleniumFirefox\\geckodriver.exe");
+	    System.setProperty("webdriver.gecko.driver",".\\Java Resources\\SeleniumFirefox\\geckodriver.exe");
 	    driver = new FirefoxDriver();
 	    Thread.sleep(2000);
 	  }
