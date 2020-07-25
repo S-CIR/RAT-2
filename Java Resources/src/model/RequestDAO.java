@@ -16,14 +16,14 @@ import src.interfaccia.UserInterface;
 
 	public class RequestDAO {
 		
-		public static boolean setWorkingSecretaryState (int idRequest, int workingSecretaryState) {
+		public static boolean setWorkingSecretaryState (int idRequest) {
 			Connection con = new DBConnection().getInstance().getConn();
 			if(con!=null) {
 				String sql = "UPDATE request SET fk_state = ? WHERE id_request = ?";
 				try {
 					PreparedStatement stmt = con.prepareStatement(sql);
-					stmt.setInt(2, workingSecretaryState);
-		            stmt.setInt(1, idRequest);
+					stmt.setInt(1, 2);
+		            stmt.setInt(2, idRequest);
 		            if (stmt.executeUpdate() > 0) 
 				    	 return true;
 				} catch (SQLException e) {
@@ -43,10 +43,11 @@ import src.interfaccia.UserInterface;
 			            + "     INNER JOIN azienda a ON r.fk_azienda = a.idazienda "
 			            + "     INNER JOIN state s ON r.fk_state = s.id_state "
 			            + "     INNER JOIN user u ON r.fk_user = u.email "
-			            + "WHERE r.fk_user = ?";
+			            + "WHERE r.fk_user = ? AND r.fk_state = ?";
 				try {
 					PreparedStatement stmt = con.prepareStatement(sql);
 					 stmt.setString(1, userMail);
+					 stmt.setInt(2, 1);
 				     ResultSet res = stmt.executeQuery();
 				     if(res.next())
 				    	 return  res;
@@ -98,12 +99,11 @@ import src.interfaccia.UserInterface;
 		public static int findIdByUserAndMiddleState(String userMail){
 			Connection con = new DBConnection().getInstance().getConn();
 			if(con!=null) {
-				String sql = " SELECT id_request FROM request WHERE fk_user = ? AND fk_state != ? AND fk_state != ?";
+				String sql = " SELECT id_request FROM request WHERE fk_user = ? AND fk_state = ?";
 				try {
 					PreparedStatement stmt = con.prepareStatement(sql);
 					stmt.setString(1, ""+userMail);
-					stmt.setString(2, new SystemAttribute().getValueByKey("request-accepted"));
-			        stmt.setString(3, new SystemAttribute().getValueByKey("request-refused"));
+					stmt.setInt(2, 1);
 					ResultSet res = stmt.executeQuery();
 					if(res.next())
 						return res.getInt("id_request");
@@ -315,6 +315,90 @@ import src.interfaccia.UserInterface;
 						return new Request(res.getInt("id_request"),res.getInt("hours"),res.getInt("requested_cfu"),res.getDate("start_date"),res.getDate("end_date"),res.getInt("validated_cfu"),res.getInt("fk_state"),res.getInt("fk_azienda"),res.getString("fk_user"), res.getString("matricola") );
 					
 				} catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return null;
+		}
+		
+		public static synchronized void inoltra(int idrequest, int stato) {
+
+			Connection con = new DBConnection().getInstance().getConn();
+			String sql = "UPDATE request SET fk_state =? WHERE id_request=?";
+			PreparedStatement stmt;
+			try {
+				stmt = con.prepareStatement(sql);
+				stmt.setInt(1, stato);
+				stmt.setInt(2, idrequest);
+				stmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		public static synchronized void addCFU(int idrequest) {
+			int new_cfu = prelevaCFU(idrequest);
+
+			Connection con = new DBConnection().getInstance().getConn();
+			String sql = "UPDATE request SET validated_cfu=?, fk_state =6 WHERE id_request=?";
+			PreparedStatement stmt;
+			try {
+				stmt = con.prepareStatement(sql);
+				stmt.setInt(1, new_cfu);
+				stmt.setInt(2, idrequest);
+				stmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		public static int prelevaCFU (int idrequest) {
+			int r_cfu, v_cfu;
+			int new_cfu = 0;
+			Connection con = new DBConnection().getInstance().getConn();
+			if(con!=null) {
+				String sql = "SELECT requested_cfu, validated_cfu FROM request WHERE id_request=?";
+				PreparedStatement stmt;
+				try {
+					stmt=con.prepareStatement(sql);
+					stmt.setInt(1,idrequest);
+					ResultSet res = stmt.executeQuery();
+					if(res.next()) {
+						r_cfu = res.getInt("requested_cfu");
+						v_cfu = res.getInt("validated_cfu");
+						new_cfu = r_cfu + v_cfu;
+						return new_cfu;
+					}	
+					else
+						return 0;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return 0;
+			}
+			else {
+				System.out.println("ERRORE - Query non eseguita\n");
+				return 0;
+			}
+		}
+		
+		public static ResultSet findByState(int fk_state){
+			Connection con = new DBConnection().getInstance().getConn();
+			if(con!=null) {
+				String sql = "SELECT r.id_request, r.matricola, u.name, u.surname, r.hours, "
+						+ "r.start_date, r.end_date, r.requested_cfu, r.validated_cfu, "
+						+ "a.name AS nomeazienda, s.description FROM request r INNER JOIN user u ON r.fk_user = u.email "
+						+ "INNER JOIN azienda a ON fk_azienda = a.idazienda "
+						+ "INNER JOIN state s ON fk_state = s.id_state WHERE r.fk_state = ?";
+				try {
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setInt(1, fk_state);
+					ResultSet res = stmt.executeQuery();
+					if(res.next())
+						return res;
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}

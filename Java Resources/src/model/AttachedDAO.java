@@ -10,15 +10,19 @@ import src.controller.DBConnection;
 
 public class AttachedDAO {
 	
-	public static ResultSet findByRequestId(int requestId) {
+	public static String findNameByRequestId(int requestId) {
 		Connection conn = new DBConnection().getInstance().getConn();
+		String f_name="";
 		if (conn != null) {
-			String sql = "SELECT a.filename AS filename FROM attached a WHERE a.fk_request = ?";
+			String sql = "SELECT filename FROM attached WHERE fk_request = ?";
 			try {
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				stmt.setInt(1, requestId);
-				ResultSet res = stmt.executeQuery(sql);
-				return res;
+				ResultSet res = stmt.executeQuery();
+				while(res.next()) {
+					f_name = res.getString("filename");
+				}
+				return f_name;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -30,12 +34,14 @@ public class AttachedDAO {
 	public static synchronized boolean doSave(Attached a) {
 		Connection conn = new DBConnection().getInstance().getConn();
 		if (conn != null) {
-			String sql = "INSERT INTO attached (filename, fk_request, fk_user) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO attached (filename, fk_user, fk_request) VALUES (?,?,?)";
+			PreparedStatement stmt;
 			try {
-				PreparedStatement stmt = conn.prepareStatement(sql);
+				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, a.getFilename());
-				stmt.setInt(1, a.getFk_request());
-				stmt.setString(3, a.getFk_user());
+				stmt.setInt(3, a.getFk_request());
+				stmt.setString(2, a.getFk_user());
+				stmt.execute();
 				return true;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -31,22 +31,22 @@ public class ServletLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String redirect="";
 		 String email = request.getParameter("email");
-	     String password = new src.model.Utils().generatePwd(request.getParameter("password"));
+	     String password = new src.controller.Utils().generatePwd(request.getParameter("password"));
 	     RequestDispatcher requestDispatcher;
 	     try {
 	        src.interfaccia.UserInterface u = UtenteDAO.verifyLogin(email, password);
 	        if (u!=null) {
-	        	System.out.println("Login effetuato");
+	        	System.out.println("Login effettuato");
 	        	src.interfaccia.UserInterface user = null;
 	        	int type = u.getUser_Type();
 	        	if (type == 0) { // Profilo Studente
-	                redirect ="/pages/area_studente/viewRequest.jsp";
+	                redirect ="/ServletRichiesteStudente";
 	                user = u;
 	              } else if (type == 1) { // Profilo Secretary
-	                redirect ="/pages/area_Secretary/viewRequest.jsp";
+	                redirect = "/pages/area_secretary/secretaryHome.jsp";
 	                user = u;
 	              } else if (type == 2) { // Profilo Admin
-	                redirect ="/pages/area_Admin/viewRequest.jsp";
+	                redirect ="/ServletRichiesteAdmin";
 	                user = u;
 	              }
 	        	 request.getSession().setAttribute("user", user);
