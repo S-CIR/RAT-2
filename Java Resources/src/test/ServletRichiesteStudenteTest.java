@@ -21,11 +21,19 @@ import src.model.Student;
 import src.model.UtenteDAO;
 
 public class ServletRichiesteStudenteTest extends Mockito {
+<<<<<<< HEAD
+	private ServletRichiesteStudente servlet;
+	private MockHttpServletRequest request;
+	private MockHttpServletResponse response;
+	private UserInterface u;
+	private static SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+=======
 private ServletRichiesteStudente servlet;
 private MockHttpServletRequest request;
 private MockHttpServletResponse response;
 private UserInterface u;
 private static SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
+>>>>>>> master
 
 	@Before
 	public void setUp() throws Exception {
