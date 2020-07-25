@@ -3,6 +3,11 @@ package src.controller;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.servlet.http.HttpSession;
 
 public class Utils {
   public Utils() {}

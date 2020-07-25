@@ -37,7 +37,6 @@
 											accedere</p>
 									</div>
 									<form id="login" action="${pageContext.request.contextPath}/ServletLogin" method="post">
-<<<<<<< HEAD
 										<div class="form-group">
 											<input id="user" type="email" class="form-control" name="email"
 												placeholder="Email" minlength="6" required>
@@ -47,17 +46,6 @@
 												placeholder="Password" minlength="8" required>
 										</div>
 										<div class="form-group">
-=======
-										<div  class="form-group">
-											<input id="user" type="email" class="form-control" name="email"
-												placeholder="Email" minlength="6" required>
-										</div>
-										<div  class="form-group">
-											<input id="password" type="password" class="form-control" name="password"
-												placeholder="Password" minlength="8" required>
-										</div>
-										<div  class="form-group">
->>>>>>> master
 											<button id="submit" type="submit" class="btn btn-primary btn-submit">Accedi</button>
 										</div>
 									</form>

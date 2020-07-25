@@ -7,10 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
-<<<<<<< HEAD
 import org.springframework.mock.web.MockHttpServletResponse;
-=======
->>>>>>> master
 
 import src.controller.CheckSession;
 import src.interfaccia.UserInterface;
@@ -21,26 +18,16 @@ import src.model.UtenteDAO;
 
 
 public class CheckSessionTest {
-<<<<<<< HEAD
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
 	private   HttpSession session;
 	private  CheckSession check;
-=======
-	
-	private MockHttpServletRequest request;
-	private HttpSession session;
-	private CheckSession check;
->>>>>>> master
 	private UserInterface u;
 	
 	@Before
 	public void setUp() throws Exception {
 		request= new MockHttpServletRequest();
-<<<<<<< HEAD
 		response= new MockHttpServletResponse();
-=======
->>>>>>> master
 		session= request.getSession();
 	}
 

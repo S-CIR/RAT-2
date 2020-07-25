@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import src.model.Admin;
 import src.model.Secretary;
 import src.model.UtenteDAO;
 

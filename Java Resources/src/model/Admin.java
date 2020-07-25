@@ -1,5 +1,7 @@
 package src.model;
 
+import src.interfaccia.UserInterface;
+
 public class Admin implements src.interfaccia.UserInterface {
 	
 	private String email;

@@ -74,7 +74,7 @@
 										<div class="form-group">
 											<!-- Matricola -->
 											<label for="matricola">Matricola</label> <input
-												class="form-control" type="number" value="0000000000"
+												class="form-control" type="number" value="0123456789"
 												id="matricola" name="matricola"required>
 										</div>
 										

@@ -2,6 +2,7 @@ package src.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -198,6 +199,7 @@ class RequestTest {
 		assertEquals(2, re.getAzienda());
 	}
 	
+	
 	//TOSTRING
 	
 	@Test
@@ -207,6 +209,16 @@ class RequestTest {
 		Date end = new Date();
 		Request re = new Request (01, 60, 6, st, end, 0, lst, 1, 1, "prova@studenti.unisa.it");
 		assertEquals("Request [idRequest=1, hours=60, requestCfu=6, startDate="+ st + ", endDate="+ end +", validatedCfu=0, attached=[], fk_state=1, fk_azienda=1, fk_user=prova@studenti.unisa.it]", re.toString());
+	}
+	
+	//SDF
+	
+	@Test
+	void testSdf() {
+		Request re = new Request(60, 6, new Date(), new Date(), 0, 1, 1, "prova@studenti.unisa.it", "0512105000");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd - mm - yyyy");
+		re.setSdf(sdf);
+		assertEquals(sdf, re.getSdf());
 	}
 	
 }

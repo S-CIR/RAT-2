@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import src.interfaccia.UserInterface;
+import src.model.AttachedDAO;
 import src.model.RequestDAO;
 
 
@@ -24,12 +26,12 @@ public class ServletRichiesteSecretary extends HttpServlet {
     }
 
     
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		doPost(request, response);
 	}
 
 	
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int stateId = Integer.parseInt(request.getParameter("stateId"));
 		int count = 0;
 		ResultSet r=null;
@@ -77,7 +79,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 		request.setAttribute("state_desc", state_desc);
         request.setAttribute("req_num", count);
         
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");
+        RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");
         requestDispatcher.forward(request, response);
 	}
 
