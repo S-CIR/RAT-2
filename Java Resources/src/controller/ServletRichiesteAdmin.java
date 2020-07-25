@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import src.model.AttachedDAO;
 import src.model.RequestDAO;
 
 /**
@@ -25,12 +26,12 @@ public class ServletRichiesteAdmin extends HttpServlet {
         super();
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 	
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int count = 0;
 		ResultSet r=null;
 		int req_ids[] = new int[10];
@@ -44,6 +45,7 @@ public class ServletRichiesteAdmin extends HttpServlet {
 		int val_cfu[] = new int[10];
 		String aziende[] = new String[10];
 		String state_desc[] = new String[10];
+		String req_filenames[] = new String[10];
 		
 		try {
         	r = RequestDAO.findByState(3);	//Recupero richieste in un determinato stato
@@ -67,6 +69,12 @@ public class ServletRichiesteAdmin extends HttpServlet {
             	  }
             	  count = i;
               }
+            for(int i = 0; i<count;i++) {
+        		String temp = AttachedDAO.findNameByRequestId(req_ids[i]);
+        		if (temp!=null) {
+            		req_filenames[i]= temp;
+        		}
+        	}
            }
 		
 		catch (SQLException e) {
@@ -85,8 +93,9 @@ public class ServletRichiesteAdmin extends HttpServlet {
 		request.setAttribute("aziende", aziende);
         request.setAttribute("state_desc", state_desc);
         request.setAttribute("req_num", count);
+        request.setAttribute("req_filenames", req_filenames);
         
-        RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_admin/viewRequest.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/pages/area_admin/viewRequest.jsp");
         requestDispatcher.forward(request, response);
 	}
 
