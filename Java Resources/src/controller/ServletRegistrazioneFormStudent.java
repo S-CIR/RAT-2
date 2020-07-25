@@ -72,7 +72,11 @@ public class ServletRegistrazioneFormStudent extends HttpServlet {
 	  	    System.out.println(hours);
 	  	    try {
 	  	    	validate(hours, "hours", "hours");
+<<<<<<< HEAD
 	  	    	vars.add(0,matricola);
+=======
+	  	    	vars.add(0,hours);
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 	  	    }catch(IllegalArgumentException e) {		    	
 	  	    	System.out.println("errore hours");
 	  	    	errs.add("hours");
@@ -231,4 +235,9 @@ public class ServletRegistrazioneFormStudent extends HttpServlet {
 		}
 
 	}
+<<<<<<< HEAD
 }
+=======
+}
+	
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960

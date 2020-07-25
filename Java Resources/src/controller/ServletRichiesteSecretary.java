@@ -26,7 +26,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
     }
 
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		doPost(request, response);
 	}
 
@@ -43,6 +43,7 @@ public class ServletRichiesteSecretary extends HttpServlet {
 		int req_cfu[] = new int[10];
 		int val_cfu[] = new int[10];
 		String state_desc[] = new String[10];
+		String req_filenames[] = new String[10];
 		
 		try {
         	r = RequestDAO.findByState(stateId);	//Recupero richieste in un determinato stato
@@ -63,6 +64,12 @@ public class ServletRichiesteSecretary extends HttpServlet {
             	  }
             	  count = i;
               }
+            for(int i = 0; i<count;i++) {
+        		String temp = AttachedDAO.findNameByRequestId(req_ids[i]);
+        		if (temp!=null) {
+            		req_filenames[i]= temp;
+        		}
+        	}
            }
 		
 		catch (SQLException e) {
@@ -78,8 +85,9 @@ public class ServletRichiesteSecretary extends HttpServlet {
 		request.setAttribute("val_cfu", val_cfu);
 		request.setAttribute("state_desc", state_desc);
         request.setAttribute("req_num", count);
+        request.setAttribute("req_filenames", req_filenames);
         
-        RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/pages/area_secretary/viewRequest.jsp");
         requestDispatcher.forward(request, response);
 	}
 

@@ -22,23 +22,23 @@ public class ServletInoltro extends HttpServlet {
         super();
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int req_id = Integer.parseInt(request.getParameter("req_id"));
 		int next_state = Integer.parseInt(request.getParameter("next_state"));
-		int user_id = Integer.parseInt(request.getParameter("user_id"));
+		int user_id = Integer.parseInt(request.getParameter("user_id")); //tipo di utente (1=segreteria, 2=admin)
 		
 		RequestDispatcher requestDispatcher= null;
 		RequestDAO.inoltra(req_id, next_state);
 		if(user_id == 1) {	//segreteria
-			requestDispatcher=getServletContext().getRequestDispatcher("/ServletRichiesteSecretary?stateId=2");
+			requestDispatcher=request.getRequestDispatcher("/ServletRichiesteSecretary?stateId=2");
 		}
 		else if(user_id == 2) {	//admin
-			requestDispatcher=getServletContext().getRequestDispatcher("/ServletRichiesteAdmin");
+			requestDispatcher=request.getRequestDispatcher("/ServletRichiesteAdmin");
 		}
         requestDispatcher.forward(request, response);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 

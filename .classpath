@@ -12,82 +12,142 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/commons-logging-1.2.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/SERVER/apache-tomcat-9.0.27/lib/servlet-api.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Downloads/apache-tomcat-9.0.27/apache-tomcat-9.0.27/lib/servlet-api.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/json-simple-1.1.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/spring-web-5.1.4.RELEASE.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/mysql-connector-java-5.1.49.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/spring-test-5.1.4.RELEASE.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/commons-logging-1.2.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/spring-core-5.1.4.RELEASE.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/spring-web-5.1.4.RELEASE.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/mysql-connector-java-8.0.9-rc.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/spring-test-5.1.4.RELEASE.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/mockito-all-2.0.2-beta.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/spring-core-5.1.4.RELEASE.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/json-simple-1.1.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/mockito-all-2.0.2-beta.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/selenium-api-3.141.0.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/commons-exec-1.3.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/selenium-firefox-driver-3.141.0.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/okio-1.6.0.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/selenium-remote-driver-3.141.0.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/okhttp-3.0.1.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/guava-29.0-jre.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/guava-29.0-jre.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/okhttp-3.0.1.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/selenium-remote-driver-3.141.0.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/commons-exec-1.3.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/selenium-firefox-driver-3.141.0.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carmine/Documents/LibrerieEclipse/okio-1.6.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Carmine/Desktop/selenium-chrome-driver-3.141.0.jar">
+=======
+	<classpathentry kind="lib" path="C:/Users/cirie/Documents/UNIVERSITA&apos;/librerie utili/selenium-api-3.141.0.jar">
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

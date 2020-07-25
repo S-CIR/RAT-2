@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
         
     <wb-module deploy-name="RAT">
                 
@@ -11,4 +12,30 @@
             
     </wb-module>
     
+=======
+                
+    
+    
+    <wb-module deploy-name="RAT">
+                                
+        
+        
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Java Resources"/>
+                                
+        
+        
+        <property name="context-root" value="RAT"/>
+                                
+        
+        
+        <property name="java-output-path" value="/RAT/bin"/>
+                            
+    
+    
+    </wb-module>
+            
+
+
+>>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 </project-modules>
