@@ -2,7 +2,6 @@ package src.systemTesting.form;
 
 import static org.junit.Assert.*;
 
-import java.sql.ResultSet;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,7 +13,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import src.controller.Utils;
 import src.interfaccia.UserInterface;
-import src.model.RequestDAO;
 import src.model.Student;
 import src.model.UtenteDAO;
 
