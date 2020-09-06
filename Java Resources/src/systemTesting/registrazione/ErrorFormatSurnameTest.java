@@ -15,7 +15,7 @@ public class ErrorFormatSurnameTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		 System.setProperty("webdriver.gecko.driver","C:\\Users\\Carmine\\Documents\\RAT-Richiesta Attestazione Tirocinio\\geckodriver.exe");
+		 System.setProperty("webdriver.gecko.driver",".\\Java Resources\\SeleniumFirefox\\geckodriver.exe");
 		 driver = new FirefoxDriver();
 	}
 

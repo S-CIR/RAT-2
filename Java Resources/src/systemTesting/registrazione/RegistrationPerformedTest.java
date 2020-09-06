@@ -62,6 +62,7 @@ public class RegistrationPerformedTest {
 	    }
 		driver.quit();
 	    UserInterface u=UtenteDAO.retrieveByEmail("n.cognome@studenti.unisa.it");
-	    UtenteDAO.doDelete(u);
+	    if(u!=null)
+	    	UtenteDAO.doDelete(u);
 	}
 }

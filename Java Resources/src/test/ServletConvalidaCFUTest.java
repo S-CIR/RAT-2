@@ -7,8 +7,6 @@ import java.text.ParseException;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +16,6 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import src.controller.ServletConvalidaCFU;
-import src.controller.ServletRichiesteSecretary;
 import src.model.Request;
 import src.model.RequestDAO;
 import src.model.Student;

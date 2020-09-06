@@ -58,7 +58,7 @@ public class ServletInoltroTest extends Mockito {
 		servlet.doGet(request,response);
 	}
 	
-	@Test
+	@Test (expected=NullPointerException.class)
 	public void testInoltroOther() throws ServletException, IOException {
 		request.addParameter("req_id","30");
 		request.addParameter("next_state","5");

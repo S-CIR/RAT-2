@@ -26,13 +26,13 @@ public class LoginPerformedStudentTest {
 	  public void setUp() throws Exception {
 		  
 		UtenteDAO.doSave(u);
-	    System.setProperty("webdriver.gecko.driver","C:\\Users\\Carmine\\Documents\\RAT-Richiesta Attestazione Tirocinio\\geckodriver.exe");
+	    System.setProperty("webdriver.gecko.driver",".\\Java Resources\\SeleniumFirefox\\geckodriver.exe");
 	    driver = new FirefoxDriver();
 	    Thread.sleep(2000);
 	  }
 
 	  @Test
-	  public void testErrorFormatPassword() throws Exception {
+	  public void testPerformed() throws Exception {
 	    driver.get("http://localhost:8080/RAT/pages/index.jsp");
 	    driver.findElement(By.linkText("Accedi")).click();
 	    driver.findElement(By.id("user")).click();

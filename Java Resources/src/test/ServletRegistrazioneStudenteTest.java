@@ -50,7 +50,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 	
 	}
 
@@ -69,7 +69,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 	
 	}
 	@Test
@@ -87,7 +87,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 	    servlet.doPost(request,response);
-	    assert(!UtenteDAO.ifExist(email));
+	    assertEquals(false,UtenteDAO.ifExist(email));
 		
 	}
 	@Test
@@ -105,7 +105,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 		
 	}
 	@Test
@@ -123,7 +123,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 	    servlet.doPost(request,response);
-	    assert(!UtenteDAO.ifExist(email));
+	    assertEquals(false,UtenteDAO.ifExist(email));
 		
 	}
 	@Test
@@ -141,7 +141,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 	
 	}
 	@Test
@@ -159,7 +159,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 		
 	}
 	@Test
@@ -177,7 +177,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 
 	}
 	@Test
@@ -195,7 +195,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 		
 	}
 
@@ -215,7 +215,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 	    servlet.doPost(request,response);
-	    assert(!UtenteDAO.ifExist(email));
+	    assertEquals(false,UtenteDAO.ifExist(email));
 	
 	}
 	@Test
@@ -234,7 +234,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
 		
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 
 	}
 	
@@ -253,7 +253,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(UtenteDAO.ifExist(email));
+		assertEquals(true,UtenteDAO.ifExist(email));
 
 	}
 
@@ -272,7 +272,7 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		request.setParameter("email", email);
 		request.setParameter("password",password);
 		servlet.doPost(request,response);
-		assert(!UtenteDAO.ifExist(email));
+		assertEquals(false,UtenteDAO.ifExist(email));
 		
 	}
 
@@ -319,12 +319,14 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		char sex='F';
 		String email="n.cognome@studenti.unisa.it";
 		String password="Password1";
+		String verpassword="Password1";
 		
 		request.setParameter("nome", nome);
 		request.setParameter("cognome", cognome);
 		request.setParameter("sex", ""+sex);
 		request.setParameter("email", email);
 		request.setParameter("password",password);
+		request.setParameter("verifyPassword",verpassword);
 		servlet.doGet(request, response);
 		UserInterface u= UtenteDAO.retrieveByEmail("n.cognome@studenti.unisa.it");
 		UtenteDAO.doDelete(u);
@@ -336,12 +338,14 @@ public class ServletRegistrazioneStudenteTest extends Mockito {
 		char sex='M';
 		String email="n.cognome@studenti.unisa.it";
 		String password="Password1";
+		String verpassword="Password1";
 		
 		request.setParameter("nome", nome);
 		request.setParameter("cognome", cognome);
 		request.setParameter("sex", ""+sex);
 		request.setParameter("email", email);
 		request.setParameter("password",password);
+		request.setParameter("verifyPassword",verpassword);
 		servlet.doPost(request, response);
 		UserInterface u= UtenteDAO.retrieveByEmail("n.cognome@studenti.unisa.it");
 		UtenteDAO.doDelete(u);

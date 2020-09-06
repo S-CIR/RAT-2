@@ -133,7 +133,7 @@ public class ServletRegistrazioneFormStudentTest extends Mockito{
 		request.setParameter("cfu", "6");
 		servlet.doGet(request,response);
 		ResultSet res=RequestDAO.findByUserMail("n.cognome@studenti.unisa.it");
-		assert(res==null);
+		assertEquals(null,res);
 		
 	}
 	
@@ -148,7 +148,7 @@ public class ServletRegistrazioneFormStudentTest extends Mockito{
 		request.setParameter("cfu", "6");
 		servlet.doGet(request,response);
 		ResultSet res=RequestDAO.findByUserMail("n.cognome@studenti.unisa.it");
-		assert(res==null);
+		assertEquals(null,res);
 	}
 	
 	@Test
@@ -162,7 +162,7 @@ public class ServletRegistrazioneFormStudentTest extends Mockito{
 		request.setParameter("cfu", "6");
 		servlet.doGet(request,response);
 		ResultSet res=RequestDAO.findByUserMail("n.cognome@studenti.unisa.it");
-		assert(res==null);
+		assertEquals(null,res);
 	}
 	
 	@Test
@@ -176,7 +176,7 @@ public class ServletRegistrazioneFormStudentTest extends Mockito{
 		request.setParameter("cfu", "6");
 		servlet.doGet(request,response);
 		ResultSet res=RequestDAO.findByUserMail("n.cognome@studenti.unisa.it");
-		assert(res==null);
+		assertEquals(null,res);
 	}
 	
 	@Test
@@ -190,7 +190,7 @@ public class ServletRegistrazioneFormStudentTest extends Mockito{
 		request.setParameter("cfu", "6");
 		servlet.doGet(request,response);
 		ResultSet res=RequestDAO.findByUserMail("n.cognome@studenti.unisa.it");
-		assert(res==null);
+		assertEquals(null,res);
 	}
 	
 	@Test
@@ -204,7 +204,7 @@ public class ServletRegistrazioneFormStudentTest extends Mockito{
 		request.setParameter("cfu", "6");
 		servlet.doGet(request,response);
 		ResultSet res=RequestDAO.findByUserMail("n.cognome@studenti.unisa.it");
-		assert(res==null);
+		assertEquals(null,res);
 	}
 	
 	@Test
@@ -218,7 +218,7 @@ public class ServletRegistrazioneFormStudentTest extends Mockito{
 		request.setParameter("cfu", "7");
 		servlet.doGet(request,response);
 		ResultSet res=RequestDAO.findByUserMail("n.cognome@studenti.unisa.it");
-		assert(res==null);
+		assertEquals(null,res);
 	}
 
 }

@@ -37,7 +37,7 @@ public class ServletRichiesteStudenteTest extends Mockito {
 
 	
 	@Test
-	public void doGet() throws ServletException, IOException, ParseException {
+	public void doGet() throws ServletException, IOException, ParseException, InterruptedException {
 		u=new Student("Mario","Roncato",'M',"m.roncato@studenti.unisa.it","password1",0);
 		UtenteDAO.doSave(u);
 		request.getSession().setAttribute("user", u);
@@ -46,11 +46,12 @@ public class ServletRichiesteStudenteTest extends Mockito {
 		Request r= new Request(0, 150, 6, start, end, 6, 2, 3, "m.roncato@studenti.unisa.it", "0123456789");
 		RequestDAO.doSave(r);
 		servlet.doGet(request, response);
+		Thread.sleep(1000);
 		UtenteDAO.doDelete(u);
 		RequestDAO.doDelete(r);
 	}
 	@Test
-	public void doGet2() throws ServletException, IOException, ParseException {
+	public void doGet2() throws ServletException, IOException, ParseException, InterruptedException {
 		u=new Student("Mario","Roncato",'M',"m.roncato@studenti.unisa.it","password1",0);
 		UtenteDAO.doSave(u);
 		request.getSession().setAttribute("user", u);
@@ -59,15 +60,17 @@ public class ServletRichiesteStudenteTest extends Mockito {
 		Request r= new Request(0, 150, 6, start, end, 6, 1, 3, "m.roncato@studenti.unisa.it", "0123456789");
 		RequestDAO.doSave(r);
 		servlet.doGet(request, response);
+		Thread.sleep(1000);
 		UtenteDAO.doDelete(u);
 		RequestDAO.doDelete(r);
 	}
 	@Test
-	public void doGet3() throws ServletException, IOException, ParseException {
+	public void doGet3() throws ServletException, IOException, ParseException, InterruptedException {
 		u=new Student("Mario","Roncato",'M',"m.roncato@studenti.unisa.it","password1",0);
 		UtenteDAO.doSave(u);
 		request.getSession().setAttribute("user", u);
 		servlet.doGet(request, response);
+		Thread.sleep(1000);
 		UtenteDAO.doDelete(u);
 	}
 	@Test
@@ -76,7 +79,7 @@ public class ServletRichiesteStudenteTest extends Mockito {
 	}
 	
 	@Test
-	public void doPost() throws ServletException, IOException, ParseException {
+	public void doPost() throws ServletException, IOException, ParseException, InterruptedException {
 		u=new Student("Mario","Roncato",'M',"m.roncato@studenti.unisa.it","password1",0);
 		UtenteDAO.doSave(u);
 		request.getSession().setAttribute("user", u);
@@ -85,6 +88,7 @@ public class ServletRichiesteStudenteTest extends Mockito {
 		Request r= new Request(0, 150, 6, start, end, 6, 2, 3, "m.roncato@studenti.unisa.it", "0123456789");
 		RequestDAO.doSave(r);
 		servlet.doPost(request, response);
+		Thread.sleep(1000);
 		UtenteDAO.doDelete(u);
 		RequestDAO.doDelete(r);
 	}

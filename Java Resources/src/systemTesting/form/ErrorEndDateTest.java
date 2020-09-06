@@ -22,7 +22,7 @@ public class ErrorEndDateTest {
 		
 		@Before
 		public void setUp() throws Exception {
-			 System.setProperty("webdriver.gecko.driver","C:\\Users\\Carmine\\Documents\\RAT-Richiesta Attestazione Tirocinio\\geckodriver.exe");
+			 System.setProperty("webdriver.gecko.driver",".\\Java Resources\\SeleniumFirefox\\geckodriver.exe");
 		    driver = (WebDriver) new FirefoxDriver();
 		    UtenteDAO.doSave(u);
 		    

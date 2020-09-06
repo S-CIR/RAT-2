@@ -51,7 +51,7 @@ public class AttachedDAO {
 		}return false;
 	}
 	
-	private static boolean ifExist (int id, int requestid, String userid) {
+	public static boolean ifExist (int id, int requestid, String userid) {
 		Connection conn = new DBConnection().getInstance().getConn();
 		
 		if (conn != null) {

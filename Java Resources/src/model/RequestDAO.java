@@ -5,13 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
 
 import src.controller.DBConnection;
-import src.model.SystemAttribute;
 import src.interfaccia.UserInterface;
 
 	public class RequestDAO {
@@ -153,12 +149,12 @@ import src.interfaccia.UserInterface;
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				return false;
 			}
 			else {
 				System.out.println("ERRORE - Query non eseguita\n");
 				return false;
 			}
+			return false;
 		}
 		
 		public static synchronized boolean doSave (Request request) throws ParseException {
@@ -194,7 +190,7 @@ import src.interfaccia.UserInterface;
 		public static synchronized void doSaveOrUpdate (Request request) throws ParseException {
 			if(ifExist(request.getIdRequest(),request.getUser(), request.getAzienda(),request.getState() )) {
 				Connection con = new DBConnection().getInstance().getConn();
-				String sql = "UPDATE request SET  hours=?, start_date=?, end_date=?,requested_cfu,validated_cfu WHERE (id_request=?);";
+				String sql = "UPDATE request SET  hours=?, start_date=?, end_date=?,requested_cfu=?,validated_cfu=? WHERE (id_request=?);";
 				PreparedStatement stmt;
 				try {
 					stmt = con.prepareStatement(sql);
@@ -239,7 +235,7 @@ import src.interfaccia.UserInterface;
 					PreparedStatement stmt = con.prepareStatement(sql);
 					ResultSet res = stmt.executeQuery();
 					while (res.next())  {
-						all.add(new Request(res.getInt("id_request"),res.getInt("hours"),res.getInt("requestCfu"),res.getDate("start_date"),res.getDate("end_date"),res.getInt("validated_cfu"),(List<Attached>)res.getObject("attached"),res.getInt("fk_state"),res.getInt("fk_azienda"),res.getString("fk_user")));
+						all.add(new Request(res.getInt("id_request"),res.getInt("hours"),res.getInt("requested_cfu"),res.getDate("start_date"),res.getDate("end_date"),res.getInt("validated_cfu"),res.getInt("fk_state"),res.getInt("fk_azienda"),res.getString("fk_user"), res.getString("matricola")));
 					}
 					if (all.size()>0) {
 						return all;
@@ -259,12 +255,13 @@ import src.interfaccia.UserInterface;
 			ArrayList <Request> all = new ArrayList<Request>();
 			if(con!=null) {
 				String sql = "SELECT * FROM request WHERE id_request=?";
+				PreparedStatement stmt;
 				try {
-					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt = con.prepareStatement(sql);
 					stmt.setInt(1,id_request);
 					ResultSet res = stmt.executeQuery();
 					if (res.next())
-						new Request(res.getInt("id_request"),res.getInt("hours"),res.getInt("requested_cfu"),res.getDate("start_date"),res.getDate("end_date"),res.getInt("validated_cfu"),res.getInt("fk_state"),res.getInt("fk_azienda"),res.getString("fk_user"), res.getString("matricola"));
+						return new Request(res.getInt("id_request"),res.getInt("hours"),res.getInt("requested_cfu"),res.getDate("start_date"),res.getDate("end_date"),res.getInt("validated_cfu"),res.getInt("fk_state"),res.getInt("fk_azienda"),res.getString("fk_user"), res.getString("matricola"));
 					
 				} catch (SQLException e) {
 					e.printStackTrace();

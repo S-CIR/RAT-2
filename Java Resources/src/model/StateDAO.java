@@ -10,7 +10,7 @@ import src.controller.DBConnection;
 
 public class StateDAO {
 	
-	private static boolean ifExist (int id) {
+	public static boolean ifExist (int id) {
 		
 		Connection conn = new DBConnection().getInstance().getConn();
 		
@@ -43,6 +43,7 @@ public class StateDAO {
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				stmt.setInt(1, s.getId_State());
 				stmt.setString(2, s.getDescription());
+				stmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

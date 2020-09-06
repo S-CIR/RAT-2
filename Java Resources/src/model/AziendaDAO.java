@@ -10,7 +10,7 @@ import src.controller.DBConnection;
 
 public class AziendaDAO {
 	
-	private static boolean ifExist(int id) {
+	public static boolean ifExist(int id) {
 		Connection con= new DBConnection().getInstance().getConn();
 		if(con!=null) {
 			String sql="SELECT * FROM azienda WHERE idazienda=?";

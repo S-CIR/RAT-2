@@ -2,10 +2,6 @@ package src.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-<<<<<<< HEAD
-import java.sql.ResultSet;
-=======
->>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -19,11 +15,6 @@ import src.interfaccia.UserInterface;
 import src.model.Student;
 import src.model.UtenteDAO;
 import src.controller.Utils;
-<<<<<<< HEAD
-
-import org.json.simple.JSONObject;
-=======
->>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
 
 
 /**
@@ -44,7 +35,7 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("Sono nella servlet");
@@ -108,17 +99,6 @@ public class ServletRegistrazioneStudente extends HttpServlet {
         //verifica la password prima di criptarla, deve contenere un numero, un carattere minuscolo, 
         //uno maiuscolo e deve avere lunghezza min 8 e max 20
         String pass = request.getParameter("password");
-<<<<<<< HEAD
-        System.out.println(pass);
-        try {
-	    	validate(pass, "pass", "password");
-	    	vars.add(4,pass);
-	    }catch(IllegalArgumentException e) {		    	
-	    	System.out.println("errore password");
-	    	errs.add("pass");
-	    	vars.add(4,"");
-	    }
-=======
         String ver = request.getParameter("verifyPassword");
         if(pass.equals(ver)) {
 	        try {
@@ -132,7 +112,6 @@ public class ServletRegistrazioneStudente extends HttpServlet {
         }else {
         	errs.add("verPass");
         }
->>>>>>> b045218bc339d290822b89e2c3cf0dc152b18960
         
         //cripta password prima di salvarla nel DB
         String password = new Utils().generatePwd(pass);
@@ -164,7 +143,7 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
@@ -220,4 +199,3 @@ public class ServletRegistrazioneStudente extends HttpServlet {
 	}
 
 }
-

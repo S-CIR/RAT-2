@@ -127,5 +127,31 @@ public class CheckSessionTest {
 	    assertEquals(true, check.isAllowed());
 	    UtenteDAO.doDelete(u);
 	}
-
+	@Test
+	public void testIsAllowed3() {
+	    u = new Admin( "Maria", "Sierra", 'F',"segret@unisa.it", "password", 2);
+	    UtenteDAO.doSave(u);
+	    request.getSession().setAttribute("user", u);
+	    check = new CheckSession("_areaSecretary","",session);
+	    assertEquals(false, check.isAllowed());
+	    UtenteDAO.doDelete(u);
+	}
+	@Test
+	public void testIsAllowed4() {
+	    u = new Admin( "Maria", "Sierra", 'F',"segret@unisa.it", "password", 1);
+	    UtenteDAO.doSave(u);
+	    request.getSession().setAttribute("user", u);
+	    check = new CheckSession("_areaAdmin","",session);
+	    assertEquals(false, check.isAllowed());
+	    UtenteDAO.doDelete(u);
+	}
+	@Test
+	public void testIsAllowed5() {
+	    u = new Admin( "Maria", "Sierra", 'F',"segret@studenti.unisa.it", "password", 0);
+	    UtenteDAO.doSave(u);
+	    request.getSession().setAttribute("user", u);
+	    check = new CheckSession("_areaAdmin","",session);
+	    assertEquals(false, check.isAllowed());
+	    UtenteDAO.doDelete(u);
+	}
 }

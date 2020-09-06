@@ -13,6 +13,7 @@ class SystemAttributeTest {
 	@Test
 	void testConstructor() {
 		SystemAttribute sa = new SystemAttribute();
+		assertNotNull(sa);
 	}
 	
 	@Test
